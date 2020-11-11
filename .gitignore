@@ -1,0 +1,12 @@
+.idea/
+.gradle/
+build/
+*.iml
+*.log
+*.log.gz
+application-*.yml
+bootstrap-*.yml
+.DS_Store
+Thumbs.db
+out/
+lombok.*
