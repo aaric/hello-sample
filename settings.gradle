@@ -1,0 +1,3 @@
+include "web-plat"
+
+rootProject.name = "hello-sample"
