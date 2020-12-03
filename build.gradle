@@ -1,6 +1,12 @@
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
 plugins {
     id "java"
-    id "io.freefair.lombok" version "5.3.0" apply false
+    id "io.freefair.lombok" version "4.1.6" apply false
     id "io.spring.dependency-management" version "1.0.10.RELEASE" apply false
     id "org.springframework.boot" version "2.3.2.RELEASE" apply false
 }
@@ -10,7 +16,7 @@ allprojects {
     version = "0.1.0-SNAPSHOT"
 
     ext {
-        springBootVersion = "2.3.2.RELEASE"
+//        springBootVersion = "2.3.2.RELEASE"
         springCloudVersion = "Hoxton.SR8"
         springCloudAlibabaVersion = "2.2.3.RELEASE"
     }
@@ -26,6 +32,7 @@ subprojects {
     apply plugin: "checkstyle"
     apply plugin: "io.freefair.lombok"
     apply plugin: "io.spring.dependency-management"
+    apply plugin: "org.springframework.boot"
 
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -50,7 +57,7 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+//            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
             mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:$springCloudAlibabaVersion"
         }
@@ -62,13 +69,21 @@ subprojects {
                 entry "slf4j-log4j12"
             }
 
-            dependency "commons-io:commons-io:2.6"
-            dependency "commons-net:commons-net:3.6"
             dependency "org.apache.commons:commons-io:1.3.2"
-            dependency "org.apache.commons:commons-lang3:3.10"
+            dependency "org.apache.commons:commons-lang3:3.11"
+            dependency "org.apache.commons:commons-collections4:4.4"
+            dependency "org.apache.commons:commons-text:1.9"
+            dependency "org.apache.commons:commons-csv:1.8"
+            dependency "org.apache.commons:commons-email:1.5"
+            dependency "org.apache.commons:commons-compress:1.20"
+            dependency "org.apache.commons:commons-rng-simple:1.3"
 
-//            dependency "io.springfox:springfox-swagger2:2.9.2"
-            dependency "com.github.xiaoymin:knife4j-spring-boot-starter:2.0.7"
+            dependency "commons-net:commons-net:3.7.2"
+            dependency "commons-codec:commons-codec:1.15"
+            dependency "commons-beanutils:commons-beanutils:1.9.2"
+
+            dependency "io.springfox:springfox-swagger2:2.9.2"
+            dependency "com.github.xiaoymin:knife4j-spring-boot-starter:2.0.4"
 
             dependency "com.github.whvcse:easy-captcha:1.6.2"
         }

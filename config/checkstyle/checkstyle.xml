@@ -68,9 +68,9 @@
 
         <!-- 长度检查 -->
         <!-- 每行不超过140个字符 -->
-        <module name="LineLength">
-            <property name="max" value="140"/>
-        </module>
+<!--        <module name="LineLength">-->
+<!--            <property name="max" value="140"/>-->
+<!--        </module>-->
         <!-- 方法不超过50行 -->
         <module name="MethodLength">
             <property name="tokens" value="METHOD_DEF"/>
@@ -157,9 +157,9 @@
         <module name="NestedForDepth">
             <property name="max" value="2"/>
         </module>
-        <!-- if最多嵌套4(3)层 -->
+        <!-- if最多嵌套3层 -->
         <module name="NestedIfDepth">
-            <property name="max" value="4"/>
+            <property name="max" value="3"/>
         </module>
         <!-- 检查未被注释的main方法,排除以Appllication结尾命名的类 -->
         <module name="UncommentedMain">

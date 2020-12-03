@@ -1,0 +1,8 @@
+dependencies {
+    implementation "org.apache.commons:commons-lang3"
+    implementation "org.apache.commons:commons-rng-simple"
+}
+
+bootRun {
+    enabled false
+}

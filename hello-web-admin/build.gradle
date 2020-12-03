@@ -1,7 +1,10 @@
-//apply plugin: "org.springframework.boot"
-
 dependencies {
-    implementation ("org.springframework.boot:spring-boot-starter-web") {
+    implementation project(":hello-common")
+
+    implementation "io.springfox:springfox-swagger2"
+    implementation "com.github.xiaoymin:knife4j-spring-boot-starter"
+
+    implementation("org.springframework.boot:spring-boot-starter-web") {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
     }
     implementation "org.springframework.boot:spring-boot-starter-undertow"
