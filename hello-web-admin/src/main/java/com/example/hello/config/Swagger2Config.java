@@ -22,9 +22,9 @@ import java.text.MessageFormat;
  *
  * @author Aaric, created on 2020-12-03T18:05.
  * @version 0.1.0-SNAPSHOT
+ * @see "https://gitee.com/xiaoym/knife4j/releases/v2.0.8"
  */
 @EnableKnife4j
-//@EnableSwagger2
 @EnableSwagger2WebMvc
 @Configuration
 public class Swagger2Config implements InitializingBean {
