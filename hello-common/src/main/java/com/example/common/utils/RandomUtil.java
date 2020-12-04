@@ -1,4 +1,4 @@
-package com.sample.common.utils;
+package com.example.common.utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 

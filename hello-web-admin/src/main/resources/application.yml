@@ -19,7 +19,7 @@ management:
 # Logging settings
 logging:
   level:
-    root: INFO
+    root: ERROR
     org:
       springframework:
         security: INFO

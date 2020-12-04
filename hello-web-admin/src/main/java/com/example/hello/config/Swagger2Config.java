@@ -1,4 +1,4 @@
-package com.sample.hello.config;
+package com.example.hello.config;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
