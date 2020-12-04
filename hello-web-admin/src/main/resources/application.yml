@@ -19,7 +19,7 @@ management:
 # Logging settings
 logging:
   level:
-    root: WARN
+    root: INFO
     org:
       springframework:
         security: INFO
@@ -30,8 +30,8 @@ logging:
   file:
     path: ${LOGGING_FILE_PATH:./}
     name: output.log
-    max-size: ${LOGGING_FILE_MAX_SIZE:20MB}
-    max-history: ${LOGGING_FILE_MAX_HISTORY:100}
+    max-size: ${LOGGING_FILE_MAX_SIZE:100MB}
+    max-history: ${LOGGING_FILE_MAX_HISTORY:50}
 
 # Spring settings
 spring:
@@ -39,3 +39,5 @@ spring:
     active: dev
   application:
     name: hello-web-admin
+#  main:
+#    allow-bean-definition-overriding: true
