@@ -1,3 +1,4 @@
-include "web-plat"
-
 rootProject.name = "hello-sample"
+
+include "hello-common"
+include "hello-web-admin"
