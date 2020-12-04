@@ -6,3 +6,11 @@ dependencies {
 bootRun {
     enabled false
 }
+
+bootJar {
+    enabled false
+}
+
+jar {
+    enabled true
+}
