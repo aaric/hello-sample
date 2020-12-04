@@ -1,10 +1,8 @@
 package com.example.hello.api.impl;
 
+import com.example.common.utils.RandomUtil;
 import com.example.hello.api.FileApi;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 文件管理API控制器
@@ -13,12 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 0.1.0-SNAPSHOT
  */
 @RestController
-@RequestMapping("/api/file")
+@RequestMapping("/api/v1/file")
 public class FileController implements FileApi {
 
     @Override
-    @GetMapping("/page/{index}/{size}")
+    @GetMapping("/{id}")
+    public String get(@PathVariable Integer id) {
+        return "get-" + RandomUtil.nextInt(10);
+    }
+
+    @Override
+    @PostMapping("/{index}/{size}")
     public String page(@PathVariable Integer index, @PathVariable Integer size) {
-        return "null";
+        return "page-" + RandomUtil.nextInt(10);
     }
 }

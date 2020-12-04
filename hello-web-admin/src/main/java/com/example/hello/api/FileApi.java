@@ -1,9 +1,6 @@
 package com.example.hello.api;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 
 /**
  * 文件管理API接口
@@ -14,10 +11,13 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "文件管理API")
 public interface FileApi {
 
-    @ApiOperation("分页查询文件列表")
+    @ApiOperation("查询文件信息")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "index", paramType = "path", dataType = "Integer", required = true, example = "1"),
-            @ApiImplicitParam(name = "size", paramType = "path", dataType = "Integer", required = true, example = "10"),
+            @ApiImplicitParam(name = "id", value = "ID", paramType = "path", dataType = "Integer", required = true, example = "1"),
     })
-    String page(Integer index, Integer size);
+    String get(Integer id);
+
+    @ApiOperation("分页查询文件列表")
+    String page(@ApiParam(value = "查询页码3", required = true, example = "1") Integer index,
+                @ApiParam(value = "分页大小3", required = true, example = "10") Integer size);
 }

@@ -14,9 +14,10 @@ public class RandomUtil {
     /**
      * 产生一个int随机数
      *
+     * @param bound 边界
      * @return
      */
-    public static final int nextInt() {
-        return ThreadLocalRandom.current().nextInt();
+    public static final int nextInt(int bound) {
+        return ThreadLocalRandom.current().nextInt(bound);
     }
 }
