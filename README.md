@@ -9,13 +9,21 @@
 
 > Hello Example.
 
-## 1. 子项目命名规范
+## 1. 子模块命名规范
 
 |No.|Name|Path|Remark|
 |:-:|----|----|------|
 |1|`hello-pojo`||*实体模块*|
 |2|`hello-common`||*共享模块*|
-|3|`hello-server-*`||*业务层*|
-|4|`hello-web-admin`|`/api/admin/v1/...`|*管理端API，命名规范：*|
+|3|`hello-service-*`||*业务层*|
+|4|`hello-web-admin`|`/api/admin/v1/...`|*管理端API*|
 |5|`hello-web-portal`|`/api/portal/v1/...`|*门户API*|
 |6|`hello-web-applet`|`/api/applet/v1/...`|*小程序API*|
+
+## 2. API RESTful 风格说明
+
+> 请求路径命名遵循`/api/{version}/{endpoint}/{package}/{function}`规则，例如：`/api/v1/admin/system/file`  
+> `version`：*版本信息，例如：`v1`、`v2`等*  
+> `endpoint`：*子模块，例如：`admin`、`portal`、`applet`等*  
+> `package`：*功能集，即包名，例如：`system`、`rbac`等*  
+> `function`：*功能，例如：`file`、`user`等*

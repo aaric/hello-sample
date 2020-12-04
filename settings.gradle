@@ -1,4 +1,5 @@
 rootProject.name = "hello-sample"
 
+include "hello-pojo"
 include "hello-common"
 include "hello-web-admin"

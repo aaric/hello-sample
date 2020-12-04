@@ -1,7 +1,7 @@
-package com.example.hello.api.impl;
+package com.example.hello.api.system.impl;
 
 import com.example.common.utils.RandomUtil;
-import com.example.hello.api.FileApi;
+import com.example.hello.api.system.FileApi;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @version 0.1.0-SNAPSHOT
  */
 @RestController
-@RequestMapping("/api/v1/file")
+@RequestMapping("/api/v1/admin/system/file")
 public class FileController implements FileApi {
 
     @Override
