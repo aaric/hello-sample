@@ -13,10 +13,9 @@ plugins {
 
 allprojects {
     group = "com.incarcloud"
-    version = "0.1.0-SNAPSHOT"
+    version = "0.2.0-SNAPSHOT"
 
     ext {
-//        springBootVersion = "2.3.2.RELEASE"
         springCloudVersion = "Hoxton.SR8"
         springCloudAlibabaVersion = "2.2.3.RELEASE"
     }
@@ -42,9 +41,6 @@ subprojects {
         runtimeClasspath {
             extendsFrom developmentOnly
         }
-        /*all {
-            exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
-        }*/
     }
 
     dependencies {
@@ -57,7 +53,6 @@ subprojects {
 
     dependencyManagement {
         imports {
-//            mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
             mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:$springCloudAlibabaVersion"
         }
