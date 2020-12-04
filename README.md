@@ -11,11 +11,11 @@
 
 ## 1. 子项目命名规范
 
-|No.|Name|Remark|
-|:-:|----|------|
-|1|`hello-pojo`|*实体模块*|
-|2|`hello-common`|*共享模块*|
-|3|`hello-server-*`|*业务层*|
-|4|`hello-web-admin`|*管理端API，命名规范：`/api/admin/v1/...`*|
-|5|`hello-web-portal`|*门户API，命名规范：`/api/portal/v1/...`*|
-|6|`hello-web-applet`|*小程序API，命名规范：`/api/applet/v1/...`*|
+|No.|Name|Path|Remark|
+|:-:|----|----|------|
+|1|`hello-pojo`||*实体模块*|
+|2|`hello-common`||*共享模块*|
+|3|`hello-server-*`||*业务层*|
+|4|`hello-web-admin`|`/api/admin/v1/...`|*管理端API，命名规范：*|
+|5|`hello-web-portal`|`/api/portal/v1/...`|*门户API*|
+|6|`hello-web-applet`|`/api/applet/v1/...`|*小程序API*|
