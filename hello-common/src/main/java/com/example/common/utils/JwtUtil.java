@@ -3,6 +3,10 @@ package com.example.common.utils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.InvalidClaimException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Date;
@@ -43,8 +47,13 @@ public class JwtUtil {
      *
      * @param token 令牌字符串
      * @return
+     * @throws AlgorithmMismatchException     算法不匹配异常
+     * @throws SignatureVerificationException 签名校验异常
+     * @throws TokenExpiredException          令牌过期异常
+     * @throws InvalidClaimException          失效的payload异常
      */
-    public static DecodedJWT verifyToken(String token) {
+    public static DecodedJWT verifyToken(String token) throws AlgorithmMismatchException,
+            SignatureVerificationException, TokenExpiredException, InvalidClaimException {
         return JWT.require(Algorithm.HMAC256(DEFAULT_SECRET))
                 .build()
                 .verify(token);

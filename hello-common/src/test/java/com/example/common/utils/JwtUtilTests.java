@@ -3,6 +3,7 @@ package com.example.common.utils;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -31,6 +32,7 @@ public class JwtUtilTests {
     }
 
     @Test
+    @Disabled
     public void TestCheckToken() {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJvaWQiOiIxIiwiZXhwIjoxNjA3OTUyOTQ4fQ.Ou5pc9qtCGANSkCC4z83HtCtuZxZlXMUeBIw6ZLSS10";
         DecodedJWT jwt = JwtUtil.verifyToken(token);
