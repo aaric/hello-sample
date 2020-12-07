@@ -33,10 +33,24 @@ public class JwtUtil {
      * @param expiresAt 过期时间
      * @return
      */
-    public static String createToken(Map<String, String> payload, Date expiresAt) {
+    public static String createToken(Map<String, Object> payload, Date expiresAt) {
         JWTCreator.Builder builder = JWT.create();
         if (null != payload && 0 != payload.size()) {
-            payload.forEach((key, value) -> builder.withClaim(key, value));
+            payload.forEach((key, value) -> {
+                if (value instanceof Boolean) {
+                    builder.withClaim(key, (Boolean) value);
+                } else if (value instanceof Integer) {
+                    builder.withClaim(key, (Integer) value);
+                } else if (value instanceof Long) {
+                    builder.withClaim(key, (Long) value);
+                } else if (value instanceof Double) {
+                    builder.withClaim(key, (Double) value);
+                } else if (value instanceof String) {
+                    builder.withClaim(key, (String) value);
+                } else if (value instanceof Date) {
+                    builder.withClaim(key, (Date) value);
+                }
+            });
         }
         builder.withExpiresAt(expiresAt);
         return builder.sign(Algorithm.HMAC256(DEFAULT_SECRET));

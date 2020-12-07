@@ -21,9 +21,9 @@ public class JwtUtilTests {
 
     @Test
     public void testCreateToken() {
-        Map<String, String> payload = new HashMap<>();
-        payload.put("id", "1");
-        payload.put("oid", "1");
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("id", 1L);
+        payload.put("oid", 1);
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 7);
         String token = JwtUtil.createToken(payload, cal.getTime());
@@ -34,10 +34,10 @@ public class JwtUtilTests {
     @Test
     @Disabled
     public void TestCheckToken() {
-        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJvaWQiOiIxIiwiZXhwIjoxNjA3OTUyOTQ4fQ.Ou5pc9qtCGANSkCC4z83HtCtuZxZlXMUeBIw6ZLSS10";
+        String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwib2lkIjoxLCJleHAiOjE2MDc5NTM2MjB9.cB2Zreukxq3_J4bkjpQU_Koz3lu087ToEsdcD6yfPfQ";
         DecodedJWT jwt = JwtUtil.verifyToken(token);
-        log.info("id: {}, oid: {}", jwt.getClaim("id").asString(),
-                jwt.getClaim("oid").asString());
+        log.info("id: {}, oid: {}", jwt.getClaim("id").asLong(),
+                jwt.getClaim("oid").asInt());
         Assertions.assertNotNull(jwt);
     }
 }
