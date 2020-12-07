@@ -15,6 +15,13 @@ public class RandomUtilTests {
 
     @Test
     public void testNextInt() {
+        int num = RandomUtil.nextInt();
+        log.info("num: {}", num);
+        Assertions.assertNotEquals(-1, num);
+    }
+
+    @Test
+    public void testNextIntBound() {
         int num = RandomUtil.nextInt(10);
         log.info("num: {}", num);
         Assertions.assertNotEquals(-1, num);

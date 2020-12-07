@@ -1,6 +1,8 @@
 dependencies {
     implementation "org.apache.commons:commons-lang3"
     implementation "org.apache.commons:commons-rng-simple"
+
+    implementation "com.auth0:java-jwt"
 }
 
 bootRun {

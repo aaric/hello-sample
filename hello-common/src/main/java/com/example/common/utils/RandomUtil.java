@@ -1,5 +1,7 @@
 package com.example.common.utils;
 
+import org.apache.commons.rng.simple.RandomSource;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -10,6 +12,14 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomUtil {
 
+    /**
+     * 产生一个int随机数
+     *
+     * @return
+     */
+    public static final int nextInt() {
+        return RandomSource.create(RandomSource.MT).nextInt();
+    }
 
     /**
      * 产生一个int随机数
