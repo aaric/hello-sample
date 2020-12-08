@@ -12,7 +12,7 @@ plugins {
 }
 
 allprojects {
-    group = "com.incarcloud"
+    group = "com.example"
     version = "0.2.0-SNAPSHOT"
 
     ext {
