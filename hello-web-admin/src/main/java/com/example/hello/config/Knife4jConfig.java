@@ -18,7 +18,7 @@ import java.net.InetAddress;
 import java.text.MessageFormat;
 
 /**
- * Swagger2配置
+ * Knife4j Swagger2 配置
  *
  * @author Aaric, created on 2020-12-03T18:05.
  * @version 0.1.0-SNAPSHOT
@@ -27,7 +27,7 @@ import java.text.MessageFormat;
 @EnableKnife4j
 @EnableSwagger2WebMvc
 @Configuration
-public class Swagger2Config implements InitializingBean {
+public class Knife4jConfig implements InitializingBean {
 
     @Value("localhost")
     private String serverHost;
