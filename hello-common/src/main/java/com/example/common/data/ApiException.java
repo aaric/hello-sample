@@ -1,6 +1,7 @@
 package com.example.common.data;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
@@ -11,7 +12,8 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class ApiException extends Exception {
+@EqualsAndHashCode(callSuper = false)
+public class ApiException extends RuntimeException {
 
     /**
      * 状态码(200-请求成功，其它异常)

@@ -15,5 +15,5 @@ import io.swagger.annotations.ApiParam;
 public interface TestApi {
 
     @ApiOperation("打招呼")
-    ApiData<String> hello(@ApiParam(value = "消息", example = "Hello, World!") String msg);
+    ApiData<String> hello(@ApiParam(value = "消息", example = "Hello, World!") String msg) throws Exception;
 }
