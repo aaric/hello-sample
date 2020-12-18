@@ -16,9 +16,9 @@
 |1|`hello-pojo`||*实体模块*|
 |2|`hello-common`||*共享模块*|
 |3|`hello-service-*`||*业务层*|
-|4|`hello-web-admin`|`/api/admin/v1/...`|*管理端API*|
-|5|`hello-web-portal`|`/api/portal/v1/...`|*门户API*|
-|6|`hello-web-applet`|`/api/applet/v1/...`|*小程序API*|
+|4|`hello-web-admin`|`/api/v1/admin/...`|*管理端API*|
+|5|`hello-web-portal`|`/api/v1/portal/...`|*门户API*|
+|6|`hello-web-applet`|`/api/v1/applet/...`|*小程序API*|
 
 ## 2. `API` 规范遵循 `RESTFul` 风格
 
@@ -26,4 +26,12 @@
 > `version`：*版本信息，例如：`v1`、`v2`等*  
 > `endpoint`：*子模块，例如：`admin`、`portal`、`applet`等*  
 > `package`：*功能集，即包名，例如：`system`、`rbac`等*  
-> `function`：*功能，即类名，例如：`file`、`user`等*
+> `class`：*功能，即类名，例如：`file`、`user`等*
+
+|No.|Operating|Http Method|Remark|
+|:-:|---------|-----------|------|
+|1|`Create`|*POST*|`/api/v1/admin/system/file`|
+|2|`Delete`|*DELETE*|`/api/v1/admin/system/file/{id}`|
+|3|`Modify`|*PUT*|`/api/v1/admin/system/file`|
+|4|`Get One`|*GET*|`/api/v1/admin/system/file/{id}`|
+|5|`Page`|*POST*|`/api/v1/admin/system/file/{index}/{size}`|
