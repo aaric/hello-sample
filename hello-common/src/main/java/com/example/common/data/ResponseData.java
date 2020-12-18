@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 请求响应数据体
+ * 响应数据对象
  *
  * @param <T> 支付泛型
  * @author Aaric, created on 2020-12-18T14:07.
@@ -14,7 +14,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(description = "请求响应数据体")
+@ApiModel(description = "响应数据对象")
 public class ResponseData<T> {
 
     /**
