@@ -10,6 +10,14 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomUtil {
 
+    /**
+     * 产生一个int随机数
+     *
+     * @return
+     */
+    public static final int nextInt() {
+        return ThreadLocalRandom.current().nextInt();
+    }
 
     /**
      * 产生一个int随机数

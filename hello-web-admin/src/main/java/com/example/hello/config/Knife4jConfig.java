@@ -1,5 +1,6 @@
 package com.example.hello.config;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,20 +12,22 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.net.InetAddress;
 import java.text.MessageFormat;
 
 /**
- * Swagger2配置
+ * Knife4j Swagger2 配置
  *
  * @author Aaric, created on 2020-12-03T18:05.
  * @version 0.1.0-SNAPSHOT
+ * @see "https://gitee.com/xiaoym/knife4j/releases/v2.0.8"
  */
-@EnableSwagger2
+@EnableKnife4j
+@EnableSwagger2WebMvc
 @Configuration
-public class Swagger2Config implements InitializingBean {
+public class Knife4jConfig implements InitializingBean {
 
     @Value("localhost")
     private String serverHost;

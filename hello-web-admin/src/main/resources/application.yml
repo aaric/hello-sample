@@ -33,6 +33,15 @@ logging:
     max-size: ${LOGGING_FILE_MAX_SIZE:100MB}
     max-history: ${LOGGING_FILE_MAX_HISTORY:50}
 
+# Knife4j settings
+knife4j:
+  enable: true
+  setting:
+    enableGroup: false
+    enableOpenApi: false
+    enableFooterCustom: true
+    footerCustomContent: 版权所有 | Copyright 2020
+
 # Spring settings
 spring:
   profiles:
