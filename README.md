@@ -20,7 +20,7 @@
 |5|`hello-web-portal`|`/api/portal/v1/...`|*门户API*|
 |6|`hello-web-applet`|`/api/applet/v1/...`|*小程序API*|
 
-## 2. API 规范遵循 RESTFul 风格
+## 2. `API` 规范遵循 `RESTFul` 风格
 
 > 请求路径命名遵循`/api/{version}/{endpoint}/{package}/{class}`规则，例如：`/api/v1/admin/system/file`  
 > `version`：*版本信息，例如：`v1`、`v2`等*  
