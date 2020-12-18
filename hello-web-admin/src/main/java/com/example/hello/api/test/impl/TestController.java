@@ -5,6 +5,7 @@ import com.example.hello.api.test.TestApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,7 +21,7 @@ public class TestController implements TestApi {
 
     @Override
     @GetMapping("/hello")
-    public ResponseData<String> hello(String msg) {
+    public ResponseData<String> hello(@RequestParam String msg) {
         return new ResponseData<String>()
                 .setData(msg);
     }

@@ -33,7 +33,7 @@ public class JwtUtilTests {
 
     @Test
     @Disabled
-    public void TestCheckToken() {
+    public void testCheckToken() {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwib2lkIjoxLCJleHAiOjE2MDc5NTM2MjB9.cB2Zreukxq3_J4bkjpQU_Koz3lu087ToEsdcD6yfPfQ";
         DecodedJWT jwt = JwtUtil.verifyToken(token);
         log.info("id: {}, oid: {}", jwt.getClaim("id").asLong(),

@@ -1,5 +1,6 @@
 package com.example.common.data;
 
+import com.example.common.core.Constants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class ResponseData<T> {
      * 响应码：200-请求成功
      */
     @ApiModelProperty(position = 1, value = "响应码：200-请求成功")
-    private Integer code = 200;
+    private Integer code = Constants.DEFAULT_SUCCESS;
 
     /**
      * 返回数据对象
