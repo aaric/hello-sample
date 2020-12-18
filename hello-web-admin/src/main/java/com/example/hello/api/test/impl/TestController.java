@@ -1,6 +1,6 @@
 package com.example.hello.api.test.impl;
 
-import com.example.common.data.ResponseData;
+import com.example.common.data.ApiData;
 import com.example.hello.api.test.TestApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +21,8 @@ public class TestController implements TestApi {
 
     @Override
     @GetMapping("/hello")
-    public ResponseData<String> hello(@RequestParam String msg) {
-        return new ResponseData<String>()
+    public ApiData<String> hello(@RequestParam String msg) {
+        return new ApiData<String>()
                 .setData(msg);
     }
 }

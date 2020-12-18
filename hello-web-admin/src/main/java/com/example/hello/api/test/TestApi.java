@@ -1,6 +1,6 @@
 package com.example.hello.api.test;
 
-import com.example.common.data.ResponseData;
+import com.example.common.data.ApiData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -15,5 +15,5 @@ import io.swagger.annotations.ApiParam;
 public interface TestApi {
 
     @ApiOperation("打招呼")
-    ResponseData<String> hello(@ApiParam(value = "消息", example = "Hello, World!") String msg);
+    ApiData<String> hello(@ApiParam(value = "消息", example = "Hello, World!") String msg);
 }
