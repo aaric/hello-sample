@@ -27,4 +27,24 @@ public class ApiException extends Exception {
      * 数据结果
      */
     private Object data;
+
+    public ApiException(Integer code) {
+        this.code = code;
+    }
+
+    public ApiException(Integer code, Object data) {
+        this.code = code;
+        this.data = data;
+    }
+
+    public ApiException(Integer code, String message) {
+        super(message);
+        this.code = code;
+    }
+
+    public ApiException(Integer code, String message, Object data) {
+        super(message);
+        this.code = code;
+        this.data = data;
+    }
 }
