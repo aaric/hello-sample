@@ -30,8 +30,9 @@
 
 |No.|Operating|Http Method|Remark|
 |:-:|---------|-----------|------|
-|1|`Create`|*POST*|`/api/v1/admin/system/file`|
-|2|`Delete`|*DELETE*|`/api/v1/admin/system/file/{id}`|
-|3|`Modify`|*PUT*|`/api/v1/admin/system/file`|
-|4|`Get One`|*GET*|`/api/v1/admin/system/file/{id}`|
-|5|`Page`|*POST*|`/api/v1/admin/system/file/{index}/{size}`|
+|1|`Create`|*POST*|`curl -X POST /api/v1/admin/system/file -d {}`|
+|2|`Delete`|*DELETE*|`curl -X DELETE /api/v1/admin/system/file/{id}`|
+|3|`Modify`|*PUT*|`curl -X PUT /api/v1/admin/system/file -d {}`|
+|4|`Is Exist`|*HEAD*|`curl -X HEAD /api/v1/admin/system/file/{id}`|
+|5|`Get One`|*GET*|`curl -X GET /api/v1/admin/system/file/{id}`|
+|6|`Page`|*POST*|`curl -X POST /api/v1/admin/system/file/{index}/{size} -d {}`|
