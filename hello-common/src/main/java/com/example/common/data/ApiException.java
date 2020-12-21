@@ -21,11 +21,6 @@ public class ApiException extends RuntimeException {
     private Integer code;
 
     /**
-     * 异常信息
-     */
-    private String message;
-
-    /**
      * 数据结果
      */
     private Object data;
