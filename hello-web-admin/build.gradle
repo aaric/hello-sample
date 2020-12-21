@@ -1,6 +1,8 @@
 dependencies {
     implementation project(":hello-common")
 
+    implementation "org.apache.commons:commons-lang3"
+
     implementation "io.springfox:springfox-swagger2"
     implementation "com.github.xiaoymin:knife4j-spring-boot-starter"
 

@@ -1,6 +1,6 @@
 package com.example.hello.api.system.impl;
 
-import com.example.common.utils.RandomUtil;
+import com.example.common.data.ApiData;
 import com.example.hello.api.system.FileApi;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +16,15 @@ public class FileController implements FileApi {
 
     @Override
     @GetMapping("/{id}")
-    public String get(@PathVariable Integer id) {
-        return "get-" + RandomUtil.nextInt(10);
+    public ApiData<Integer> get(@PathVariable Integer id) {
+        return new ApiData<Integer>()
+                .setData(id);
     }
 
     @Override
     @PostMapping("/{index}/{size}")
-    public String page(@PathVariable Integer index, @PathVariable Integer size) {
-        return "page-" + RandomUtil.nextInt(10);
+    public ApiData<String> page(@PathVariable Integer index, @PathVariable Integer size) {
+        return new ApiData<String>()
+                .setData(String.format("%d-%d", index, size));
     }
 }

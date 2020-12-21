@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
- * 响应数据对象
+ * 请求API数据
  *
  * @param <T> 支付泛型
  * @author Aaric, created on 2020-12-18T14:07.
@@ -15,18 +15,24 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(description = "响应数据对象")
-public class ResponseData<T> {
+@ApiModel(description = "请求API数据")
+public class ApiData<T> {
 
     /**
-     * 响应码：200-请求成功
+     * 状态码：200-请求成功
      */
-    @ApiModelProperty(position = 1, value = "响应码：200-请求成功")
+    @ApiModelProperty(position = 1, value = "状态码：200-请求成功")
     private Integer code = Constants.DEFAULT_SUCCESS;
 
     /**
-     * 返回数据对象
+     * 错误信息
      */
-    @ApiModelProperty(position = 2, value = "响应数据对象")
+    @ApiModelProperty(position = 2, value = "错误信息")
+    private String errorMessage;
+
+    /**
+     * 数据结果
+     */
+    @ApiModelProperty(position = 3, value = "数据结果")
     private T data;
 }

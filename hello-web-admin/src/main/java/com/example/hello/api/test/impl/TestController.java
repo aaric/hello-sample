@@ -1,8 +1,10 @@
 package com.example.hello.api.test.impl;
 
-import com.example.common.data.ResponseData;
+import com.example.common.data.ApiData;
+import com.example.common.data.ApiException;
 import com.example.hello.api.test.TestApi;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +23,12 @@ public class TestController implements TestApi {
 
     @Override
     @GetMapping("/hello")
-    public ResponseData<String> hello(@RequestParam String msg) {
-        return new ResponseData<String>()
+    public ApiData<String> hello(@RequestParam(required = false) String msg) throws Exception {
+        if (StringUtils.isBlank(msg)) {
+            throw new ApiException(10001, "fake!!!");
+        }
+
+        return new ApiData<String>()
                 .setData(msg);
     }
 }
