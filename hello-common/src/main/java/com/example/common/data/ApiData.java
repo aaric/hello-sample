@@ -25,8 +25,14 @@ public class ApiData<T> {
     private Integer code = Constants.DEFAULT_SUCCESS;
 
     /**
+     * 错误信息
+     */
+    @ApiModelProperty(position = 2, value = "错误信息")
+    private String errorMessage;
+
+    /**
      * 数据结果
      */
-    @ApiModelProperty(position = 2, value = "数据结果")
+    @ApiModelProperty(position = 3, value = "数据结果")
     private T data;
 }

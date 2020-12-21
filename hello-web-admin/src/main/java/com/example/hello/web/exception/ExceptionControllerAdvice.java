@@ -1,6 +1,12 @@
 package com.example.hello.web.exception;
 
+import com.example.common.data.ApiData;
+import com.example.common.data.ApiException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -13,4 +19,22 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler(ApiException.class)
+    public ApiData<String> handleApiException(ApiException e) {
+        return new ApiData<String>()
+                .setCode(e.getCode())
+                .setErrorMessage(e.getMessage());
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler(Exception.class)
+    public ApiData<String> handleDefaultException(Exception e) {
+        return new ApiData<String>()
+                .setCode(500)
+                .setErrorMessage(e.getMessage());
+    }
 }

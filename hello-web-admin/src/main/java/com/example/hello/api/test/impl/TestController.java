@@ -25,7 +25,7 @@ public class TestController implements TestApi {
     @GetMapping("/hello")
     public ApiData<String> hello(@RequestParam(required = false) String msg) throws Exception {
         if (StringUtils.isBlank(msg)) {
-            throw new ApiException(404);
+            throw new ApiException(10001, "fake!!!");
         }
 
         return new ApiData<String>()
