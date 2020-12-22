@@ -1,0 +1,22 @@
+dependencies {
+    implementation project(":hello-pojo")
+    implementation project(":hello-common")
+
+    implementation "org.apache.commons:commons-lang3"
+    implementation "jakarta.servlet:jakarta.servlet-api"
+
+    implementation "org.springframework:spring-web"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+}
+
+bootRun {
+    enabled false
+}
+
+bootJar {
+    enabled false
+}
+
+jar {
+    enabled true
+}

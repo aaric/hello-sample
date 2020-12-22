@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 @ApiModel(description = "用户信息")
-public class UserInfo {
+public class User {
 
     @ApiModelProperty(position = 1, value = "ID", example = "1")
     private Long id;
