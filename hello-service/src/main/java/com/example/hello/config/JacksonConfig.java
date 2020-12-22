@@ -24,4 +24,13 @@ public class JacksonConfig {
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
         return objectMapper;
     }
+
+//    @Bean
+//    public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() throws Exception {
+//        // https://www.baeldung.com/spring-boot-formatting-json-dates
+//        return builder -> {
+//            builder.serializerByType(Date.class, new WriteDateAsSecondsDateSerializer());
+//            builder.deserializerByType(Date.class, new WriteDateAsSecondsDeserializer());
+//        };
+//    }
 }

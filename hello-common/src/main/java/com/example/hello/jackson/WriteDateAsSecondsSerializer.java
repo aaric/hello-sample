@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Aaric, created on 2020-12-22T16:31.
  * @version 0.4.0-SNAPSHOT
  */
-public class WriteDateAsSecondsDateSerializer extends JsonSerializer<Date> {
+public class WriteDateAsSecondsSerializer extends JsonSerializer<Date> {
 
     @Override
     public void serialize(Date value, JsonGenerator gen, SerializerProvider provider) throws IOException {
