@@ -23,7 +23,7 @@ public class UserController implements UserApi {
     @Override
     @GetMapping("/{id}")
     public ApiData<User> get(@PathVariable Long id) {
-        User userInfo = new User()
+        User user = new User()
                 .setId(id)
                 .setUsername("admin")
                 .setPassword("123456")
@@ -31,6 +31,6 @@ public class UserController implements UserApi {
                 .setName("超级管理员")
                 .setSex(0)
                 .setBirthday(new Date());
-        return new ApiData<User>().setData(userInfo);
+        return new ApiData<User>().setData(user);
     }
 }

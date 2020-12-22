@@ -1,6 +1,9 @@
 dependencies {
+    implementation project(":hello-common")
+
     implementation "io.swagger:swagger-annotations"
     implementation "org.apache.commons:commons-lang3"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
 }
 
 bootRun {

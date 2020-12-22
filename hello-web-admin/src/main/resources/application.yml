@@ -50,7 +50,7 @@ spring:
     name: hello-web-admin
   jackson:
     default-property-inclusion: NON_EMPTY
-    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
+    property-naming-strategy: SNAKE_CASE
     serialization:
       write-dates-as-timestamps: true
 #  main:
