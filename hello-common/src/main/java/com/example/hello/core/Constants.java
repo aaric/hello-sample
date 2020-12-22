@@ -9,7 +9,18 @@ package com.example.hello.core;
 public interface Constants {
 
     /**
-     * 响应码：200-请求成功
+     * 状态码
      */
-    int DEFAULT_SUCCESS = 200;
+    interface ApiCode {
+
+        /**
+         * 响应码：200-请求成功
+         */
+        int DEFAULT_SUCCESS = 200;
+
+        /**
+         * 响应码：200-请求成功
+         */
+        int DEFAULT_ERROR = 500;
+    }
 }

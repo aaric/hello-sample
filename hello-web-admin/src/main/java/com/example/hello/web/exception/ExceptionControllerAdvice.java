@@ -1,5 +1,6 @@
 package com.example.hello.web.exception;
 
+import com.example.hello.core.Constants;
 import com.example.hello.data.ApiData;
 import com.example.hello.data.ApiException;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(Exception.class)
     public ApiData<String> handleDefaultException(Exception e) {
         return new ApiData<String>()
-                .setCode(500)
+                .setCode(Constants.ApiCode.DEFAULT_ERROR)
                 .setErrorMessage(e.getMessage());
     }
 }
