@@ -1,6 +1,6 @@
 package com.example.hello.api.system.impl;
 
-import com.example.common.data.ApiData;
+import com.example.hello.data.ApiData;
 import com.example.hello.api.system.FileApi;
 import org.springframework.web.bind.annotation.*;
 

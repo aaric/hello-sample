@@ -1,6 +1,6 @@
 package com.example.hello.api.system;
 
-import com.example.common.data.ApiData;
+import com.example.hello.data.ApiData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

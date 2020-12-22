@@ -1,4 +1,4 @@
-package com.example.common.utils;
+package com.example.hello.utils;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;

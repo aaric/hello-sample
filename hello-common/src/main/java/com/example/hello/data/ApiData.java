@@ -1,6 +1,6 @@
-package com.example.common.data;
+package com.example.hello.data;
 
-import com.example.common.core.Constants;
+import com.example.hello.core.Constants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class ApiData<T> {
      * 状态码：200-请求成功
      */
     @ApiModelProperty(position = 1, value = "状态码：200-请求成功")
-    private Integer code = Constants.DEFAULT_SUCCESS;
+    private Integer code = Constants.ApiCode.DEFAULT_SUCCESS;
 
     /**
      * 错误信息

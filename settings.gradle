@@ -8,4 +8,5 @@ rootProject.name = "hello-sample"
 
 include "hello-pojo"
 include "hello-common"
+include "hello-service"
 include "hello-web-admin"
