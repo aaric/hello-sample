@@ -1,4 +1,4 @@
-package com.example.common.core;
+package com.example.hello.core;
 
 /**
  * 常量类

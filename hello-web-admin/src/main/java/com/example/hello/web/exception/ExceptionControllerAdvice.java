@@ -1,7 +1,7 @@
 package com.example.hello.web.exception;
 
-import com.example.common.data.ApiData;
-import com.example.common.data.ApiException;
+import com.example.hello.data.ApiData;
+import com.example.hello.data.ApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

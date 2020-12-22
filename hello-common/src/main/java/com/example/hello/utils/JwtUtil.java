@@ -1,4 +1,4 @@
-package com.example.common.utils;
+package com.example.hello.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;

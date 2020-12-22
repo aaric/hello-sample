@@ -1,6 +1,6 @@
-package com.example.common.data;
+package com.example.hello.data;
 
-import com.example.common.core.Constants;
+import com.example.hello.core.Constants;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

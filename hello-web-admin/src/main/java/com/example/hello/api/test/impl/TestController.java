@@ -1,7 +1,7 @@
 package com.example.hello.api.test.impl;
 
-import com.example.common.data.ApiData;
-import com.example.common.data.ApiException;
+import com.example.hello.data.ApiData;
+import com.example.hello.data.ApiException;
 import com.example.hello.api.test.TestApi;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
