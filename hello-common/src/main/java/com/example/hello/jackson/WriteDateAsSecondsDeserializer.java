@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * 毫秒时间转日期反序列化器
+ * 秒时间转日期反序列化器
  *
  * @author Aaric, created on 2020-12-22T16:29.
  * @version 0.4.0-SNAPSHOT

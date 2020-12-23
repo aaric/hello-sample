@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * 日期转毫秒时间序列化器
+ * 日期转秒时间序列化器
  *
  * @author Aaric, created on 2020-12-22T16:31.
  * @version 0.4.0-SNAPSHOT

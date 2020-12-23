@@ -8,13 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Jackson配置
+ * ObjectMapper配置
  *
  * @author Aaric, created on 2020-12-22T16:50.
  * @version 0.4.0-SNAPSHOT
  */
 @Configuration
-public class JacksonConfig {
+public class ObjectMapperConfig {
 
     @Bean
     ObjectMapper customObjectMapper() {
