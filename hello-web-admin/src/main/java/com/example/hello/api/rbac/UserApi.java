@@ -15,6 +15,9 @@ import io.swagger.annotations.ApiParam;
 @Api(tags = "用户信息API")
 public interface UserApi {
 
-    @ApiOperation("查询用户信息")
+    @ApiOperation("创建用户档案")
+    ApiData<User> create(@ApiParam User user);
+
+    @ApiOperation("查询用户档案")
     ApiData<User> get(@ApiParam(value = "ID", required = true, example = "1") Long id);
 }

@@ -3,10 +3,8 @@ package com.example.hello.api.rbac.impl;
 import com.example.hello.api.rbac.UserApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.pojo.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.commons.lang3.RandomUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -19,6 +17,15 @@ import java.util.Date;
 @RestController
 @RequestMapping("/api/v1/admin/rbac/user")
 public class UserController implements UserApi {
+
+    @Override
+    @PostMapping("/")
+    public ApiData<User> create(@RequestBody User user) {
+        if (null != user) {
+            user.setId(RandomUtils.nextLong(0, 100));
+        }
+        return new ApiData<User>().setData(user);
+    }
 
     @Override
     @GetMapping("/{id}")
