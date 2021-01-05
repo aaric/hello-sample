@@ -25,7 +25,7 @@ public final class RandomUtil {
     }
 
     /**
-     * 产生一个int随机字符串（验证码）
+     * 产生一串int随机字符串（适用手机验证码）
      *
      * @param origin 最小值（包含）
      * @param length 字符串长度
