@@ -2,6 +2,7 @@ package com.example.hello.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,15 +16,16 @@ public class RandomUtilTests {
 
     @Test
     public void testNextInt() {
-        int num = RandomUtil.nextInt();
+        int num = RandomUtil.nextInt(1, 1000000);
         log.info("num: {}", num);
-        Assertions.assertNotEquals(-1, num);
+        Assertions.assertNotEquals(1000000, num);
     }
 
-    @Test
-    public void testNextIntBound() {
-        int num = RandomUtil.nextInt(10);
-        log.info("num: {}", num);
-        Assertions.assertNotEquals(-1, num);
+    @RepeatedTest(100)
+    public void testNextText() {
+        int length = 6;
+        String code = RandomUtil.nextText(1, length);
+        log.info("code: {}", code);
+        Assertions.assertEquals(length, code.length());
     }
 }

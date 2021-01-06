@@ -16,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 import java.net.InetAddress;
 import java.text.MessageFormat;
+import java.util.Date;
 
 /**
  * Knife4j Swagger2 配置
@@ -40,6 +41,7 @@ public class Knife4jConfig implements InitializingBean {
         return new Docket(DocumentationType.SWAGGER_2)
                 .host(serverHost)
                 .apiInfo(apiInfo())
+                .directModelSubstitute(Date.class, Long.class)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example"))
                 .paths(PathSelectors.any())
@@ -52,7 +54,7 @@ public class Knife4jConfig implements InitializingBean {
                 .description("Spring Boot 2.3.x框架集成测试")
                 .termsOfServiceUrl(MessageFormat.format("http://{0}:{1}/doc.html", serverHost, serverPort))
                 .contact(new Contact("Aaric", "", "vipaaric@gmail.com"))
-                .version("0.1.0")
+                .version("0.4.0")
                 .build();
     }
 

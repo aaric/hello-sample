@@ -3,6 +3,7 @@ dependencies {
     implementation "io.swagger:swagger-annotations"
     implementation "org.apache.commons:commons-lang3"
     implementation "jakarta.servlet:jakarta.servlet-api"
+    implementation "org.springframework:spring-web"
     implementation "com.fasterxml.jackson.core:jackson-databind"
 }
 

@@ -12,14 +12,14 @@ import lombok.experimental.Accessors;
 import java.util.Date;
 
 /**
- * 用户信息
+ * 用户档案
  *
  * @author Aaric, created on 2020-12-22T15:06.
  * @version 0.4.0-SNAPSHOT
  */
 @Data
 @Accessors(chain = true)
-@ApiModel(description = "用户信息")
+@ApiModel(description = "用户档案")
 public class User {
 
     @ApiModelProperty(position = 1, value = "ID", example = "1")

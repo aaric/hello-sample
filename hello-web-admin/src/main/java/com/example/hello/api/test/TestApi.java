@@ -16,4 +16,7 @@ public interface TestApi {
 
     @ApiOperation("打招呼")
     ApiData<String> hello(@ApiParam(value = "消息", example = "Hello, World!") String msg) throws Exception;
+
+    @ApiOperation("文本转json")
+    String text2json() throws Exception;
 }
