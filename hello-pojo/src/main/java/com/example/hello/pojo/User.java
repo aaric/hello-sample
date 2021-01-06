@@ -42,6 +42,6 @@ public class User {
 
     @JsonSerialize(using = WriteDateAsSecondsSerializer.class)
     @JsonDeserialize(using = WriteDateAsSecondsDeserializer.class)
-    @ApiModelProperty(position = 1, value = "出生日期")
+    @ApiModelProperty(position = 1, value = "出生日期", example = "1609430400")
     private Date birthday;
 }
