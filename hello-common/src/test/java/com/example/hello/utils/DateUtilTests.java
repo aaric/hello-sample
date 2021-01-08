@@ -35,8 +35,20 @@ public class DateUtilTests {
         date = DateUtil.parse("2021-01-06", "yyyy-MM-dd");
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
+    }
 
-        date = DateUtil.parse(1609862400);
+    @Test
+    public void testSecondsTo() {
+        Date date = DateUtil.parse("2021-01-06 00:00:00");
+        long seconds = DateUtil.secondsTo(date);
+        log.info("seconds: {}", seconds);
+        Assertions.assertEquals(1609862400, seconds);
+    }
+
+    @Test
+    public void testSecondsFrom() {
+        long seconds = 1609862400L;
+        Date date = DateUtil.secondsFrom(seconds);
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
     }

@@ -72,12 +72,22 @@ public final class DateUtil {
     }
 
     /**
-     * 秒时间转换为日期
+     * 日期转换为秒时间戳
      *
-     * @param seconds 秒时间
+     * @param date 日期
      * @return
      */
-    public static Date parse(long seconds) {
+    public static long secondsTo(Date date) {
+        return date.getTime() / 1000L;
+    }
+
+    /**
+     * 秒时间戳转换为日期
+     *
+     * @param seconds 秒时间戳
+     * @return
+     */
+    public static Date secondsFrom(long seconds) {
         return new Date(seconds * 1000L);
     }
 }
