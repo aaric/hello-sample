@@ -1,9 +1,5 @@
 package com.example.hello.pojo;
 
-import com.example.hello.jackson.WriteDateAsSecondsDeserializer;
-import com.example.hello.jackson.WriteDateAsSecondsSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -40,8 +36,8 @@ public class User {
     @ApiModelProperty(position = 1, value = "性别：0-未知，1-男，2-女", example = "0")
     private Integer sex;
 
-    @JsonSerialize(using = WriteDateAsSecondsSerializer.class)
-    @JsonDeserialize(using = WriteDateAsSecondsDeserializer.class)
+    //@JsonSerialize(using = WriteDateAsSecondsSerializer.class)
+    //@JsonDeserialize(using = WriteDateAsSecondsDeserializer.class)
     @ApiModelProperty(position = 1, value = "出生日期", example = "1609430400")
     private Date birthday;
 }

@@ -98,6 +98,6 @@ public final class DateUtil {
      * @return
      */
     public static Date secondsFrom(String text) {
-        return new Date(Long.valueOf(text.trim()) * 1000L);
+        return secondsFrom(Long.valueOf(text.trim()));
     }
 }
