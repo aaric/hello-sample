@@ -28,4 +28,14 @@ public class RandomUtilTests {
         log.info("code: {}", code);
         Assertions.assertEquals(length, code.length());
     }
+
+    @RepeatedTest(10)
+    public void testNextTextPwd() {
+        int length = 8;
+        String password1 = RandomUtil.nextText(length);
+        String password2 = RandomUtil.nextText(length, false);
+        log.info("password1: {}, password2: {}", password1, password2);
+        Assertions.assertEquals(length, password1.length());
+        Assertions.assertEquals(length, password2.length());
+    }
 }

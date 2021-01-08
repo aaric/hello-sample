@@ -3,6 +3,7 @@ package com.example.hello.api.rbac.impl;
 import com.example.hello.api.rbac.UserApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.pojo.User;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  * @author Aaric, created on 2020-12-04T17:01.
  * @version 0.2.0-SNAPSHOT
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/admin/rbac/user")
 public class UserController implements UserApi {
@@ -22,6 +24,9 @@ public class UserController implements UserApi {
     @PostMapping("/")
     public ApiData<User> create(@RequestBody User user) {
         if (null != user) {
+            log.info("create | birthday={}", user.getBirthday());
+            user.setBirthday(new Date());
+
             user.setId(RandomUtils.nextLong(0, 100));
         }
         return new ApiData<User>().setData(user);

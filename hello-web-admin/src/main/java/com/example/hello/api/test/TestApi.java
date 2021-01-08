@@ -5,6 +5,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
+import java.util.Date;
+
 /**
  * 测试模块API接口
  *
@@ -19,4 +21,7 @@ public interface TestApi {
 
     @ApiOperation("文本转json")
     String text2json() throws Exception;
+
+    @ApiOperation("简单日期表单")
+    ApiData<Date> form(@ApiParam(value = "日期", example = "1609862400") Date creationTime) throws Exception;
 }
