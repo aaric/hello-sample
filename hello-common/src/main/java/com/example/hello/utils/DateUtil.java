@@ -90,4 +90,14 @@ public final class DateUtil {
     public static Date secondsFrom(long seconds) {
         return new Date(seconds * 1000L);
     }
+
+    /**
+     * 秒时间戳转换为日期
+     *
+     * @param text 秒时间戳字符串
+     * @return
+     */
+    public static Date secondsFrom(String text) {
+        return new Date(Long.valueOf(text.trim()) * 1000L);
+    }
 }

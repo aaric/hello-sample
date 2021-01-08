@@ -51,5 +51,10 @@ public class DateUtilTests {
         Date date = DateUtil.secondsFrom(seconds);
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
+
+        String text = "1609862400";
+        date = DateUtil.secondsFrom(text);
+        log.info("date: {}", date);
+        Assertions.assertNotNull(date);
     }
 }
