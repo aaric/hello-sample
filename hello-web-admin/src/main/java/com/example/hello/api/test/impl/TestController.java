@@ -6,10 +6,9 @@ import com.example.hello.data.ApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * 测试模块API控制器
@@ -37,5 +36,14 @@ public class TestController implements TestApi {
     @GetMapping(value = "/text2json", produces = MediaType.APPLICATION_JSON_VALUE)
     public String text2json() throws Exception {
         return "{\"application\": \"hello-web-admin\",\"version\": \"0.4.0-SNAPSHOT\"}";
+    }
+
+    @Override
+    @PostMapping("/form")
+    public ApiData<Date> form(@RequestParam Date creationTime) throws Exception {
+        log.info("form | creationTime={}", creationTime);
+        creationTime = new Date();
+        return new ApiData<Date>()
+                .setData(creationTime);
     }
 }

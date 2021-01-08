@@ -1,11 +1,16 @@
 package com.example.hello.config;
 
+import com.example.hello.json.jackson.WriteDateAsSecondsDeserializer;
+import com.example.hello.json.jackson.WriteDateAsSecondsSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Date;
 
 /**
  * ObjectMapper配置
@@ -22,15 +27,13 @@ public class ObjectMapperConfig {
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
+
+        // 标准日期与秒时间戳相互转换，设置全局序列化器与反序列化器
+        SimpleModule customDateModule = new SimpleModule();
+        customDateModule.addSerializer(Date.class, new WriteDateAsSecondsSerializer());
+        customDateModule.addDeserializer(Date.class, new WriteDateAsSecondsDeserializer());
+        objectMapper.registerModule(customDateModule);
+
         return objectMapper;
     }
-
-//    @Bean
-//    public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() throws Exception {
-//        // https://www.baeldung.com/spring-boot-formatting-json-dates
-//        return builder -> {
-//            builder.serializerByType(Date.class, new WriteDateAsSecondsDateSerializer());
-//            builder.deserializerByType(Date.class, new WriteDateAsSecondsDeserializer());
-//        };
-//    }
 }
