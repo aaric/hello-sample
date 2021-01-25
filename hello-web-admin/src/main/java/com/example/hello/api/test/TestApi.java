@@ -1,6 +1,7 @@
 package com.example.hello.api.test;
 
 import com.example.hello.data.ApiData;
+import com.example.hello.pojo.ValidBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -24,4 +25,7 @@ public interface TestApi {
 
     @ApiOperation("简单日期表单")
     ApiData<Date> form(@ApiParam(value = "日期", example = "1609862400") Date creationTime) throws Exception;
+
+    @ApiOperation("数据校验")
+    ApiData<Long> valid(@ApiParam(value = "用户档案") ValidBean validBean);
 }

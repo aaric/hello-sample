@@ -3,11 +3,13 @@ package com.example.hello.api.test.impl;
 import com.example.hello.api.test.TestApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.data.ApiException;
+import com.example.hello.pojo.ValidBean;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 
 /**
@@ -45,5 +47,13 @@ public class TestController implements TestApi {
         creationTime = new Date();
         return new ApiData<Date>()
                 .setData(creationTime);
+    }
+
+    @Override
+    @PostMapping("/valid")
+    public ApiData<Long> valid(@Valid @RequestBody ValidBean validBean) {
+        log.info("valid | validBean={}", validBean);
+        return new ApiData<Long>()
+                .setData(1L);
     }
 }

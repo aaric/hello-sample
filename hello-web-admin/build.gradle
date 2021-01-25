@@ -13,4 +13,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-undertow"
 
     implementation "com.github.xiaoymin:knife4j-spring-boot-starter"
+
+    implementation "javax.validation:validation-api"
 }
