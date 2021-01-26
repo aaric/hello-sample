@@ -27,5 +27,5 @@ public interface TestApi {
     ApiData<Date> form(@ApiParam(value = "日期", example = "1609862400") Date creationTime) throws Exception;
 
     @ApiOperation("数据校验")
-    ApiData<Long> valid(@ApiParam(value = "用户档案") ValidBean validBean);
+    ApiData<Long> valid(@ApiParam(value = "用户档案") ValidBean validBean) throws Exception;
 }

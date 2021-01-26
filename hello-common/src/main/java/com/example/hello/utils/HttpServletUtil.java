@@ -1,11 +1,13 @@
 package com.example.hello.utils;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * Http Servlet Util
@@ -47,5 +49,16 @@ public final class HttpServletUtil {
         return ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes())
                 .getResponse();
+    }
+
+    /**
+     * HttpServletRequest Body<br>
+     * Spring MVC Error -> UT010004: Cannot call getReader(), getInputStream() already called
+     *
+     * @return
+     */
+    @Deprecated
+    public static String getBody() throws IOException {
+        return IOUtils.toString(getRequest().getReader());
     }
 }

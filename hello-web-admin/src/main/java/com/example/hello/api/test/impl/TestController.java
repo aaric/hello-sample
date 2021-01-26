@@ -51,7 +51,7 @@ public class TestController implements TestApi {
 
     @Override
     @PostMapping("/valid")
-    public ApiData<Long> valid(@Valid @RequestBody ValidBean validBean) {
+    public ApiData<Long> valid(@Valid @RequestBody ValidBean validBean) throws Exception {
         log.info("valid | validBean={}", validBean);
         return new ApiData<Long>()
                 .setData(1L);
