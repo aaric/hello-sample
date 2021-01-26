@@ -30,7 +30,7 @@ public class ValidBeanTests {
             Iterator<ConstraintViolation<ValidBean>> it = validateResult.iterator();
             while (it.hasNext()) {
                 ConstraintViolation<ValidBean> result = it.next();
-                log.info("testValid | field={}, error: {}", result.getPropertyPath(), result.getMessage());
+                log.info("testValid | {}={}, error={}", result.getPropertyPath(), result.getInvalidValue(), result.getMessage());
             }
         }
     }
