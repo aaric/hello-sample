@@ -1,6 +1,5 @@
-package com.example.hello.valid;
+package com.example.hello.pojo;
 
-import com.example.hello.pojo.ValidBean;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -27,10 +26,12 @@ public class ValidBeanTests {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean);
-        Iterator<ConstraintViolation<ValidBean>> it = validateResult.iterator();
-        while (it.hasNext()) {
-            ConstraintViolation<ValidBean> result = it.next();
-            log.info("testValid | field={}, error: {}", result.getPropertyPath(), result.getMessage());
+        if (0 != validateResult.size()) {
+            Iterator<ConstraintViolation<ValidBean>> it = validateResult.iterator();
+            while (it.hasNext()) {
+                ConstraintViolation<ValidBean> result = it.next();
+                log.info("testValid | field={}, error: {}", result.getPropertyPath(), result.getMessage());
+            }
         }
     }
 }
