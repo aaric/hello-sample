@@ -58,4 +58,16 @@ public class ValidBean {
     @DecimalMax(value = "0", inclusive = false, message = "被注释的元素必须是一个数字，其值必须小于等于指定的最大值")
     @ApiModelProperty(position = 10, value = "例如：salary")
     private BigDecimal decimalMax = BigDecimal.ZERO;
+
+    @Positive(message = "被注释的元素必须是一个严格意义上正数")
+    @ApiModelProperty(position = 11, value = "例如：money")
+    private int positive = 0;
+
+    @PositiveOrZero(message = "被注释的元素必须是一个正数或者0")
+    @ApiModelProperty(position = 12, value = "例如：money")
+    private double positiveOrZero = -1;
+
+    @Size(min = 5, max = 15, message = "被注释的元素的大小必须在指定的范围内（包含）")
+    @ApiModelProperty(position = 13, value = "例如：username, array")
+    private String size = "test";
 }
