@@ -1,5 +1,6 @@
 package com.example.hello.pojo;
 
+import com.example.hello.validation.constraints.NormalAge;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -107,4 +108,8 @@ public class ValidBean {
     @Email(message = "被注释的元素必须是电子邮箱地址")
     @ApiModelProperty(position = 22, value = "例如：email")
     private String email = "admin@-abc.com";
+
+    @NormalAge
+    @ApiModelProperty(position = 23, value = "例如：age")
+    private int normalAge = 0;
 }
