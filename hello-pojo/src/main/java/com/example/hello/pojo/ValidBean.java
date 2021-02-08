@@ -1,5 +1,6 @@
 package com.example.hello.pojo;
 
+import com.example.hello.validation.constraints.LeapYear;
 import com.example.hello.validation.constraints.NormalAge;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -112,4 +113,8 @@ public class ValidBean {
     @NormalAge
     @ApiModelProperty(position = 23, value = "例如：age")
     private int normalAge = 0;
+
+    @LeapYear
+    @ApiModelProperty(position = 23, value = "例如：year")
+    private Date leapYear = new Date();
 }
