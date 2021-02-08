@@ -28,4 +28,7 @@ public interface TestApi {
 
     @ApiOperation("数据校验")
     ApiData<Long> valid(@ApiParam(value = "用户档案") ValidBean validBean) throws Exception;
+
+    @ApiOperation("数据校验（自定义）")
+    ApiData<Long> validCustom(@ApiParam(value = "用户档案") ValidBean validBean) throws Exception;
 }

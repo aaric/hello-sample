@@ -24,11 +24,11 @@ public class ValidBeanTests {
     public void testValid() {
         ValidBean validBean = new ValidBean();
 
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean);
-        if (0 != validateResult.size()) {
-            Iterator<ConstraintViolation<ValidBean>> it = validateResult.iterator();
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+        Set<ConstraintViolation<ValidBean>> validateResults = validator.validate(validBean);
+        if (0 != validateResults.size()) {
+            Iterator<ConstraintViolation<ValidBean>> it = validateResults.iterator();
             while (it.hasNext()) {
                 ConstraintViolation<ValidBean> result = it.next();
                 log.info("testValid | {}={}, error={}", result.getPropertyPath(),
@@ -41,10 +41,10 @@ public class ValidBeanTests {
     public void testValidGroup() {
         ValidBean validBean = new ValidBean();
 
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean, Other.class);
-        validateResult.forEach(result -> {
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+        Set<ConstraintViolation<ValidBean>> validateResults = validator.validate(validBean, Other.class);
+        validateResults.forEach(result -> {
             log.info("testValid | {}={}, error={}, level={}", result.getPropertyPath(),
                     result.getInvalidValue(), result.getMessage(),
                     result.getConstraintDescriptor().getPayload().toString());

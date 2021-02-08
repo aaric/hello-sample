@@ -4,13 +4,15 @@ import com.example.hello.api.test.TestApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.data.ApiException;
 import com.example.hello.pojo.ValidBean;
+import com.example.hello.validation.groups.Other;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import javax.validation.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 测试模块API控制器
@@ -53,6 +55,22 @@ public class TestController implements TestApi {
     @PostMapping("/valid")
     public ApiData<Long> valid(@Valid @RequestBody ValidBean validBean) throws Exception {
         log.info("valid | validBean={}", validBean);
+        return new ApiData<Long>()
+                .setData(1L);
+    }
+
+    @Override
+    @PostMapping("/valid/custom")
+    public ApiData<Long> validCustom(@RequestBody ValidBean validBean) throws Exception {
+        log.info("validCustom | validBean={}", validBean);
+
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+        Set<ConstraintViolation<ValidBean>> validateResults = validator.validate(validBean, Other.class);
+        if (null != validateResults && 0 != validateResults.size()) {
+            throw new ConstraintViolationException(validateResults);
+        }
+
         return new ApiData<Long>()
                 .setData(1L);
     }
