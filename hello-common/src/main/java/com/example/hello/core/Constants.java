@@ -16,7 +16,7 @@ public interface Constants {
         /**
          * 响应码：200-请求成功
          */
-        int DEFAULT_SUCCESS = 200;
+        int SUCCESS = 200;
 
         /**
          * 响应码：500-默认异常

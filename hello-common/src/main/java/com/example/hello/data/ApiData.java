@@ -22,7 +22,7 @@ public class ApiData<T> {
      * 状态码：200-请求成功
      */
     @ApiModelProperty(position = 1, value = "状态码：200-请求成功")
-    private Integer code = Constants.ApiCode.DEFAULT_SUCCESS;
+    private Integer code = Constants.ApiCode.SUCCESS;
 
     /**
      * 错误信息
