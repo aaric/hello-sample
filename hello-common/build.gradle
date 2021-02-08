@@ -1,11 +1,14 @@
 dependencies {
     implementation "com.auth0:java-jwt"
     implementation "io.swagger:swagger-annotations"
+    implementation "org.apache.commons:commons-io"
     implementation "org.apache.commons:commons-lang3"
     implementation "jakarta.servlet:jakarta.servlet-api"
     implementation "org.springframework:spring-web"
     implementation "org.springframework:spring-context"
     implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    implementation "javax.validation:validation-api"
 }
 
 bootRun {
