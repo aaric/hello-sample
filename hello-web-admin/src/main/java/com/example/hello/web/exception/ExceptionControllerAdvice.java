@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -63,6 +64,18 @@ public class ExceptionControllerAdvice {
         errors.forEach(error -> {
             tips.put(error.getPropertyPath().toString(), error.getMessage());
         });
+        return new ApiData<>()
+                .setCode(ERROR_600)
+                .setErrorMessage("valid error")
+                .setData(tips);
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ApiData<Object> handleMissingServletRequestParameterException(MissingServletRequestParameterException e) {
+        Map<String, String> tips = new HashMap<>(1);
+        tips.put(e.getParameterName(), e.getMessage());
         return new ApiData<>()
                 .setCode(ERROR_600)
                 .setErrorMessage("valid error")

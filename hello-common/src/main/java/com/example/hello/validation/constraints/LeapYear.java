@@ -17,7 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @author Aaric, created on 2021-02-08T10:30.
  * @version 0.5.0-SNAPSHOT
  */
-@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Target({METHOD, FIELD, ANNOTATION_TYPE, PARAMETER})
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = {LeapYearValidator.class})

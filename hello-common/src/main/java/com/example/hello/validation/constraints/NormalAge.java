@@ -19,7 +19,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 @Min(value = 1, message = "最小年龄为1岁")
 @Max(value = 2, message = "最大年龄为120岁")
-@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Target({METHOD, FIELD, ANNOTATION_TYPE, PARAMETER})
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = {})
