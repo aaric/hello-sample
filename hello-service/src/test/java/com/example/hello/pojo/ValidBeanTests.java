@@ -1,6 +1,6 @@
 package com.example.hello.pojo;
 
-import com.example.hello.validation.groups.Update;
+import com.example.hello.validation.groups.Other;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,8 @@ public class ValidBeanTests {
             Iterator<ConstraintViolation<ValidBean>> it = validateResult.iterator();
             while (it.hasNext()) {
                 ConstraintViolation<ValidBean> result = it.next();
-                log.info("testValid | {}={}, error={}", result.getPropertyPath(), result.getInvalidValue(), result.getMessage());
+                log.info("testValid | {}={}, error={}", result.getPropertyPath(),
+                        result.getInvalidValue(), result.getMessage());
             }
         }
     }
@@ -42,9 +43,11 @@ public class ValidBeanTests {
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean, Update.class);
+        Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean, Other.class);
         validateResult.forEach(result -> {
-            log.info("testValid | {}={}, error={}", result.getPropertyPath(), result.getInvalidValue(), result.getMessage());
+            log.info("testValid | {}={}, error={}, level={}", result.getPropertyPath(),
+                    result.getInvalidValue(), result.getMessage(),
+                    result.getConstraintDescriptor().getPayload().toString());
         });
     }
 }

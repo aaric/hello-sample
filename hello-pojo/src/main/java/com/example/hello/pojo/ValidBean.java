@@ -2,8 +2,10 @@ package com.example.hello.pojo;
 
 import com.example.hello.validation.constraints.LeapYear;
 import com.example.hello.validation.constraints.NormalAge;
-import com.example.hello.validation.groups.Create;
+import com.example.hello.validation.groups.Other;
 import com.example.hello.validation.groups.Update;
+import com.example.hello.validation.payloads.Error;
+import com.example.hello.validation.payloads.Warn;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -112,11 +114,11 @@ public class ValidBean {
     @ApiModelProperty(position = 22, value = "例如：email")
     private String email = "admin@-abc.com";
 
-    @NormalAge(groups = {Create.class})
+    @NormalAge(groups = Update.class, payload = Error.class)
     @ApiModelProperty(position = 23, value = "例如：age")
     private int normalAge = 0;
 
-    @LeapYear(groups = {Update.class})
+    @LeapYear(groups = Other.class, payload = Warn.class)
     @ApiModelProperty(position = 23, value = "例如：year")
     private Date leapYear = new Date();
 }
