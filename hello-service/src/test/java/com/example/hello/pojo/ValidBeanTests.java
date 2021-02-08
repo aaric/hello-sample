@@ -1,5 +1,6 @@
 package com.example.hello.pojo;
 
+import com.example.hello.validation.groups.Update;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +34,17 @@ public class ValidBeanTests {
                 log.info("testValid | {}={}, error={}", result.getPropertyPath(), result.getInvalidValue(), result.getMessage());
             }
         }
+    }
+
+    @Test
+    public void testValidGroup() {
+        ValidBean validBean = new ValidBean();
+
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<ValidBean>> validateResult = validator.validate(validBean, Update.class);
+        validateResult.forEach(result -> {
+            log.info("testValid | {}={}, error={}", result.getPropertyPath(), result.getInvalidValue(), result.getMessage());
+        });
     }
 }
