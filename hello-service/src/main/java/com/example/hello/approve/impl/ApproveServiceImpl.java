@@ -20,15 +20,12 @@ public class ApproveServiceImpl implements ApproveService {
     private BudgetService budgetService;
 
     @Override
-    public Integer agree(String id, String dealId, String remark) throws Exception {
+    public Integer deal(String id, String dealId, Integer status, String remark) throws Exception {
         // id -> workflow_id, bizId
         String workflow_id = null;
         String bizId = null;
 
-        Integer flag = 0;
-
         BaseApproveCallbackService callbackService = null;
-
         switch (workflow_id) {
             case BaseApproveService.WORKFLOW_PAGEA:
                 callbackService = pageaService;
@@ -40,8 +37,22 @@ public class ApproveServiceImpl implements ApproveService {
         }
 
         if (null != callbackService) {
-            // Agree
-            flag = callbackService.agree(bizId, dealId, remark);
+            Integer flag = 0;
+            switch (status) {
+                case 1:
+                    // Agree
+                    flag = callbackService.agree(bizId, dealId, remark);
+                    break;
+                case 2:
+                    // Refuse
+                    flag = callbackService.refuse(bizId, dealId, remark);
+                    break;
+                case 3:
+                    // Withdraw
+                    flag = callbackService.withdraw(bizId, dealId, remark);
+                    break;
+                default:
+            }
 
             // TODO flag
             if (0 != flag) {
