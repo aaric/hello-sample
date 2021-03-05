@@ -1,10 +1,7 @@
 package com.example.hello.approve.impl;
 
-import com.example.hello.approve.ApproveService;
-import com.example.hello.approve.BaseApproveCallbackService;
-import com.example.hello.approve.BaseApproveService;
+import com.example.hello.approve.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,12 +14,10 @@ import org.springframework.stereotype.Service;
 public class ApproveServiceImpl implements ApproveService {
 
     @Autowired
-    @Qualifier("pageaService")
-    private BaseApproveCallbackService pageaService;
+    private PageaService pageaService;
 
     @Autowired
-    @Qualifier("budgetService")
-    private BaseApproveCallbackService budgetService;
+    private BudgetService budgetService;
 
     @Override
     public Integer agree(String id, String dealId, String remark) throws Exception {
@@ -32,19 +27,26 @@ public class ApproveServiceImpl implements ApproveService {
 
         Integer flag = 0;
 
+        BaseApproveCallbackService callbackService = null;
+
         switch (workflow_id) {
             case BaseApproveService.WORKFLOW_PAGEA:
-                flag = pageaService.agree(bizId, dealId, remark);
+                callbackService = pageaService;
                 break;
 
             case BaseApproveService.WORKFLOW_BUDGET:
-                flag = budgetService.agree(bizId, dealId, remark);
+                callbackService = budgetService;
                 break;
         }
 
-        // TODO flag
-        if (0 != flag) {
-            // update status
+        if (null != callbackService) {
+            // Agree
+            flag = callbackService.agree(bizId, dealId, remark);
+
+            // TODO flag
+            if (0 != flag) {
+                // update status
+            }
         }
 
         return null;

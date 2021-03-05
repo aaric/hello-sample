@@ -1,6 +1,5 @@
 package com.example.hello.approve.impl;
 
-import com.example.hello.approve.BaseApproveCallbackService;
 import com.example.hello.approve.BaseApproveService;
 import com.example.hello.approve.BudgetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @version 0.6.0-SNAPSHOT
  */
 @Service
-public class BudgetServiceImpl implements BudgetService, BaseApproveCallbackService {
+public class BudgetServiceImpl implements BudgetService {
 
     @Autowired
     private BaseApproveService baseApproveService;
