@@ -1,6 +1,7 @@
 package com.example.hello.approve.impl;
 
 import com.example.hello.approve.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
  * @author Aaric, created on 2021-03-04T18:05.
  * @version 0.6.0-SNAPSHOT
  */
+@Slf4j
 @Service
 public class ApproveServiceImpl implements ApproveService {
 
@@ -22,11 +24,11 @@ public class ApproveServiceImpl implements ApproveService {
     @Override
     public Integer deal(String id, String dealId, Integer status, String remark) throws Exception {
         // id -> workflow_id, bizId
-        String workflow_id = null;
+        String workflowId = null;
         String bizId = null;
 
         BaseApproveCallbackService callbackService = null;
-        switch (workflow_id) {
+        switch (workflowId) {
             case BaseApproveService.WORKFLOW_PAGEA:
                 callbackService = pageaService;
                 break;
@@ -34,6 +36,7 @@ public class ApproveServiceImpl implements ApproveService {
             case BaseApproveService.WORKFLOW_BUDGET:
                 callbackService = budgetService;
                 break;
+            default:
         }
 
         if (null != callbackService) {
@@ -57,6 +60,7 @@ public class ApproveServiceImpl implements ApproveService {
             // TODO flag
             if (0 != flag) {
                 // update status
+                log.info("flag: {}", flag);
             }
         }
 
