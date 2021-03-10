@@ -21,3 +21,11 @@ spring:
     active: dev
   application:
     name: hello-service
+  mail:
+    default-encoding: UTF-8
+    protocol: smtp
+    host: smtp.exmail.qq.com
+    port: 465
+    username: username@exmail.qq.com
+    password: password
+    test-connection: false
