@@ -5,11 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.Arrays;
 
 /**
  * MailServiceTests
@@ -22,23 +21,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ExtendWith(SpringExtension.class)
 public class MailServiceTests {
 
-    @Value("${spring.mail.username}")
-    private String from;
-
-    @Autowired
-    private MailSender mailSender;
-
     @Autowired
     private MailService mailService;
 
     @Test
     public void testSendSimple() {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom(from);
-        msg.setTo("qlhan@incarcloud.com");
-        msg.setSubject("hello world");
-        msg.setText("<b>Ignore: test mail</b>");
-        mailSender.send(msg);
+        mailService.sendText("hello world", "<b>Ignore: test mail</b>",
+                Arrays.asList("qlhan@incarcloud.com"), null);
     }
 
     @Test

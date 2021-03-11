@@ -13,13 +13,26 @@ import java.util.List;
 public interface MailService {
 
     /**
-     * 发送邮件
+     * 发送文本邮件
      *
      * @param subject 主题
-     * @param html    内容
+     * @param text    内容
      * @param to      发送人
      * @param cc      抄送人
+     * @param bcc     密送人
      * @return
      */
-    boolean send(@NonNull String subject, @NonNull String html, @NonNull List<String> to, String... cc);
+    boolean sendText(@NonNull String subject, @NonNull String text, @NonNull List<String> to, List<String> cc, String... bcc);
+
+    /**
+     * 发送HTML邮件
+     *
+     * @param subject 主题
+     * @param html    html
+     * @param to      发送人
+     * @param cc      抄送人
+     * @param bcc     密送人
+     * @return
+     */
+    boolean sendHtml(@NonNull String subject, @NonNull String html, @NonNull List<String> to, List<String> cc, String... bcc);
 }
