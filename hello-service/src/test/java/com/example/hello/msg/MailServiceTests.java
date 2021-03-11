@@ -25,13 +25,14 @@ public class MailServiceTests {
     private MailService mailService;
 
     @Test
-    public void testSendSimple() {
-        mailService.sendText("hello world", "<b>Ignore: test mail</b>",
+    public void testSendText() {
+        mailService.sendText("hello text", "<b>Ignore: test mail</b>",
                 Arrays.asList("qlhan@incarcloud.com"), null);
     }
 
     @Test
-    public void testSend() {
-
+    public void testSendHtml() {
+        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", null,
+                Arrays.asList("qlhan@incarcloud.com"), null);
     }
 }
