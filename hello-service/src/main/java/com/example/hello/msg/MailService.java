@@ -19,7 +19,17 @@ public interface MailService {
      *
      * @param subject 主题
      * @param text    内容
-     * @param to      发送人
+     * @param to      收件人
+     * @return
+     */
+    boolean sendText(@NonNull String subject, @NonNull String text, @NonNull String... to);
+
+    /**
+     * 发送文本邮件
+     *
+     * @param subject 主题
+     * @param text    内容
+     * @param to      收件人
      * @param cc      抄送人
      * @param bcc     密送人
      * @return
@@ -32,7 +42,18 @@ public interface MailService {
      * @param subject     主题
      * @param html        html
      * @param attachments 附件
-     * @param to          发送人
+     * @param to          收件人
+     * @return
+     */
+    boolean sendHtml(@NonNull String subject, @NonNull String html, Map<String, File> attachments, String... to);
+
+    /**
+     * 发送HTML邮件
+     *
+     * @param subject     主题
+     * @param html        html
+     * @param attachments 附件
+     * @param to          收件人
      * @param cc          抄送人
      * @param bcc         密送人
      * @return

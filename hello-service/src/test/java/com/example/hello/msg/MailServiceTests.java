@@ -11,7 +11,6 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,15 +30,17 @@ public class MailServiceTests {
 
     @Test
     public void testSendText() {
-        mailService.sendText("hello text", "<b>Ignore: test mail</b>",
-                Arrays.asList("qlhan@incarcloud.com"), null);
+//        mailService.sendText("hello text", "<b>Ignore: test mail</b>",
+//                Arrays.asList("qlhan@incarcloud.com"), null);
+        mailService.sendText("hello text", "<b>Ignore: test mail</b>", "qlhan@incarcloud.com");
     }
 
     @Test
     public void testSendHtml() throws FileNotFoundException {
         Map<String, File> attachments = new HashMap<>();
         attachments.put("application.yml", ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + "application.yml"));
-        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", attachments,
-                Arrays.asList("qlhan@incarcloud.com"), null);
+//        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", attachments,
+//                Arrays.asList("qlhan@incarcloud.com"), null);
+        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", attachments, "qlhan@incarcloud.com");
     }
 }

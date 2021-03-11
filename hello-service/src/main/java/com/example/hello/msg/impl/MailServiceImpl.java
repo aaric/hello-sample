@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -43,6 +44,11 @@ public class MailServiceImpl implements MailService {
     }
 
     @Override
+    public boolean sendText(@NonNull String subject, @NonNull String text, @NonNull String... to) {
+        return sendText(subject, text, Arrays.asList(to), null);
+    }
+
+    @Override
     public boolean sendText(@NonNull String subject, @NonNull String text, @NonNull List<String> to, List<String> cc, String... bcc) {
         try {
             SimpleMailMessage msg = new SimpleMailMessage();
@@ -66,6 +72,11 @@ public class MailServiceImpl implements MailService {
             log.error("sendSimple exception", e);
         }
         return false;
+    }
+
+    @Override
+    public boolean sendHtml(@NonNull String subject, @NonNull String html, Map<String, File> attachments, String... to) {
+        return sendHtml(subject, html, attachments, Arrays.asList(to), null);
     }
 
     @Override
