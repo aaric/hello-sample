@@ -7,8 +7,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * MailServiceTests
@@ -31,8 +36,10 @@ public class MailServiceTests {
     }
 
     @Test
-    public void testSendHtml() {
-        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", null,
+    public void testSendHtml() throws FileNotFoundException {
+        Map<String, File> attachments = new HashMap<>();
+        attachments.put("application.yml", ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + "application.yml"));
+        mailService.sendHtml("hello html", "<b>Ignore: test mail</b>", attachments,
                 Arrays.asList("qlhan@incarcloud.com"), null);
     }
 }

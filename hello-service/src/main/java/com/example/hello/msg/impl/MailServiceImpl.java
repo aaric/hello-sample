@@ -72,7 +72,13 @@ public class MailServiceImpl implements MailService {
     public boolean sendHtml(@NonNull String subject, @NonNull String html, Map<String, File> attachments, @NonNull List<String> to, List<String> cc, String... bcc) {
         try {
             MimeMessage msg = javaMailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(msg);
+
+            MimeMessageHelper helper;
+            if (null != attachments && 0 != attachments.size()) {
+                helper = new MimeMessageHelper(msg, true);
+            } else {
+                helper = new MimeMessageHelper(msg);
+            }
 
             helper.setFrom(from);
             helper.setTo(toArray(to));
