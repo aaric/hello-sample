@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 public class MailServiceImpl implements MailService {
-    
+
     @Override
     public boolean send(@NonNull String subject, @NonNull String html, @NonNull List<String> to, String... cc) {
         return false;
