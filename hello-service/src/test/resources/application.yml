@@ -31,3 +31,14 @@ spring:
     test-connection: false
     properties:
       mail.smtp.auth: true
+  elasticsearch:
+    rest:
+      uris: [ "127.0.0.1:9200" ]
+      connection-timeout: 15s
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
+      repositories:
+        enabled: true
+      #properties.*= # Additional properties used to configure the client.

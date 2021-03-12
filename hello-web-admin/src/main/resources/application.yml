@@ -15,6 +15,9 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+  health:
+    elasticsearch:
+      response-timeout: 3s
 
 # Logging settings
 logging:
