@@ -2,7 +2,9 @@ package com.example.hello.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -17,6 +19,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 @Data
 @Accessors(chain = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @ApiModel(description = "商品信息")
 @Document(indexName = "test_goods", shards = 3, replicas = 0)
 public class Goods {
