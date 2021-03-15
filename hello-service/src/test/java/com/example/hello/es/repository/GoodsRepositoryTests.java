@@ -3,6 +3,7 @@ package com.example.hello.es.repository;
 import com.example.hello.TestApp;
 import com.example.hello.pojo.Goods;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.List;
  * @author Aaric, created on 2021-03-15T11:32.
  * @version 0.8.0-SNAPSHOT
  */
+@Disabled
 @Slf4j
 @SpringBootTest(classes = TestApp.class)
 @ExtendWith(SpringExtension.class)
@@ -60,6 +62,14 @@ public class GoodsRepositoryTests {
     @Test
     public void testFindByPriceBetween() {
         List<Goods> goodsList = goodsRepository.findByPriceBetween(2.00, 5.00);
+        goodsList.forEach(o -> {
+            log.info("id: {}, title: {}", o.getId(), o.getTitle());
+        });
+    }
+
+    @Test
+    public void testFindByTitleOperator() {
+        List<Goods> goodsList = goodsRepository.findByTitleOperator("文具", "or");
         goodsList.forEach(o -> {
             log.info("id: {}, title: {}", o.getId(), o.getTitle());
         });

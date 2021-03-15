@@ -1,6 +1,7 @@
 package com.example.hello.es.repository;
 
 import com.example.hello.pojo.Goods;
+import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface GoodsRepository extends ElasticsearchRepository<Goods, Long> {
     List<Goods> findByTitle(String title);
 
     List<Goods> findByPriceBetween(Double min, Double max);
+
+    @Query("{\"match\":{\"title\":{\"query\":\"?0\",\"operator\":\"?1\"}}}")
+    List<Goods> findByTitleOperator(String title, String operator);
 }
