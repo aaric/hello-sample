@@ -13,6 +13,9 @@ import org.springframework.data.elasticsearch.core.IndexOperations;
 import org.springframework.data.elasticsearch.core.document.Document;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ElasticsearchTests
  *
@@ -24,6 +27,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest(classes = TestApp.class)
 @ExtendWith(SpringExtension.class)
 public class ElasticsearchTests {
+
+    public static final List<Goods> GOODS_LIST = new ArrayList<>();
+
+    static {
+        GOODS_LIST.add(new Goods(1L, "自动铅笔", "文具", "晨光", 2.00, "该商品供应充足。"));
+        GOODS_LIST.add(new Goods(2L, "橡皮擦", "文具", "晨光", 1.00, "该商品供应充足。"));
+        GOODS_LIST.add(new Goods(3L, "钢笔", "文具", "得力", 5.00, "该商品暂时缺货。"));
+        GOODS_LIST.add(new Goods(4L, "文具盒", "文具", "得力", 10.00, "该商品暂时缺货。"));
+        GOODS_LIST.add(new Goods(5L, "笔记本", "文具", "真彩", 15.00, "该商品供应充足。"));
+    }
 
     @Autowired
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
@@ -39,11 +52,7 @@ public class ElasticsearchTests {
     }
 
     @Test
-    public void testSaveRecord() {
-        elasticsearchRestTemplate.save(new Goods(1L, "自动铅笔", "文具", "晨光", 2.00, "该商品供应充足。"));
-        elasticsearchRestTemplate.save(new Goods(2L, "橡皮擦", "文具", "晨光", 1.00, "该商品供应充足。"));
-        elasticsearchRestTemplate.save(new Goods(3L, "钢笔", "文具", "得力", 5.00, "该商品暂时缺货。"));
-        elasticsearchRestTemplate.save(new Goods(4L, "文具盒", "文具", "得力", 10.00, "该商品暂时缺货。"));
-        elasticsearchRestTemplate.save(new Goods(5L, "笔记本", "文具", "真彩", 15.00, "该商品供应充足。"));
+    public void testSave() {
+        GOODS_LIST.forEach(goods -> elasticsearchRestTemplate.save(goods));
     }
 }
