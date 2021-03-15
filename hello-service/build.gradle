@@ -13,6 +13,8 @@ dependencies {
 
     implementation "org.freemarker:freemarker"
     implementation "org.springframework.boot:spring-boot-starter-mail"
+
+    implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch"
 }
 
 bootRun {
