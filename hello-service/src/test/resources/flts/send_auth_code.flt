@@ -2,6 +2,11 @@
 <html lang="zh">
 <head>
   <title>发送邮箱验证码</title>
+  <style>
+    * {
+      font-family: SimSun;
+    }
+  </style>
 </head>
 <body>
   <p>您好，验证码为<b>${code}</b>，${minutes}分钟内有效，注意保密！</p>
