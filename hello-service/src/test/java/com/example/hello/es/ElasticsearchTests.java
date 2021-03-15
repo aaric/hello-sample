@@ -44,12 +44,4 @@ public class ElasticsearchTests {
         elasticsearchRestTemplate.save(new Goods(4L, "文具盒", "文具", "得力", 10.00, "该商品暂时缺货。"));
         elasticsearchRestTemplate.save(new Goods(5L, "笔记本", "文具", "真彩", 15.00, "该商品供应充足。"));
     }
-
-    @Test
-    public void testQuery() {
-    }
-
-    @Test
-    public void testElasticsearchOps() {
-    }
 }
