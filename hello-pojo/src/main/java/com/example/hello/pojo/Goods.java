@@ -45,7 +45,11 @@ public class Goods {
     @Field(type = FieldType.Double)
     private Double price;
 
-    @ApiModelProperty(position = 2, value = "商品描述", example = "该商品供应充足。")
+    @ApiModelProperty(position = 6, value = "商品描述", example = "该商品供应充足。")
     @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String remark;
+
+    @ApiModelProperty(position = 7, value = "标签", example = "小学、初中、高中、大学")
+    @Field(type = FieldType.Text, fielddata = true)
+    private String[] tags;
 }
