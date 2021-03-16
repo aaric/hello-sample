@@ -58,7 +58,7 @@ public class MailServiceTests {
 
         StringWriter writer = new StringWriter();
         Map<String, String> data = new HashMap<>();
-        data.put("code", RandomUtil.nextText(6));
+        data.put("code", RandomUtil.nextText(6, false));
         data.put("minutes", "30");
         sendAuthCodeTemplate.process(data, writer);
         String html = writer.toString();
