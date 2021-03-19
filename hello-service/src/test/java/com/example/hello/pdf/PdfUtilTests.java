@@ -3,6 +3,7 @@ package com.example.hello.pdf;
 import com.example.hello.utils.FreeMarkerUtil;
 import com.example.hello.utils.PdfUtil;
 import com.example.hello.utils.RandomUtil;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -15,6 +16,7 @@ import java.util.Map;
  * @author Aaric, created on 2021-03-15T17:39.
  * @version 0.9.0-SNAPSHOT
  */
+@Disabled
 public class PdfUtilTests {
 
     @Test
