@@ -9,6 +9,9 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-databind"
 
     implementation "javax.validation:validation-api"
+
+    implementation "com.itextpdf:itextpdf"
+    implementation "org.xhtmlrenderer:core-renderer"
 }
 
 bootRun {

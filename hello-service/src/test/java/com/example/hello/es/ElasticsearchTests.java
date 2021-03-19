@@ -35,12 +35,18 @@ public class ElasticsearchTests {
     public static final List<Goods> GOODS_LIST = new ArrayList<>();
 
     static {
-        GOODS_LIST.add(new Goods(1L, "自动铅笔", "文具", "晨光", 2.00, "该商品供应充足。"));
-        GOODS_LIST.add(new Goods(2L, "橡皮擦", "文具", "晨光", 1.00, "该商品供应充足。"));
-        GOODS_LIST.add(new Goods(3L, "钢笔", "文具", "得力", 5.00, "该商品暂时缺货。"));
-        GOODS_LIST.add(new Goods(4L, "文具盒", "文具", "得力", 10.00, "该商品暂时缺货。"));
-        GOODS_LIST.add(new Goods(5L, "笔记本", "文具", "真彩", 15.00, "该商品供应充足。"));
-        GOODS_LIST.add(new Goods(6L, "彩色铅笔", "文具", "晨光", 2.00, "该商品供应充足。"));
+        GOODS_LIST.add(new Goods(1L, "自动铅笔", "文具", "晨光", 2.00,
+                "该商品供应充足。", new String[]{"小学", "初中", "高中", "大学"}));
+        GOODS_LIST.add(new Goods(2L, "橡皮擦", "文具", "晨光", 1.00,
+                "该商品供应充足。", new String[]{"小学", "初中", "高中", "大学"}));
+        GOODS_LIST.add(new Goods(3L, "钢笔", "文具", "得力", 5.00,
+                "该商品暂时缺货。", new String[]{"初中", "高中", "大学"}));
+        GOODS_LIST.add(new Goods(4L, "文具盒", "文具", "得力", 10.00,
+                "该商品暂时缺货。", new String[]{"小学", "初中", "高中"}));
+        GOODS_LIST.add(new Goods(5L, "笔记本", "文具", "真彩", 15.00,
+                "该商品供应充足。", new String[]{"初中", "高中", "大学"}));
+        GOODS_LIST.add(new Goods(6L, "彩色铅笔", "文具", "晨光", 2.00,
+                "该商品供应充足。", new String[]{"小学"}));
     }
 
     @Autowired
@@ -64,7 +70,7 @@ public class ElasticsearchTests {
     @Test
     public void testQuery() {
         NativeSearchQuery query = new NativeSearchQueryBuilder()
-                .withQuery(QueryBuilders.matchQuery("title", "铅笔"))
+                .withQuery(QueryBuilders.matchQuery("members", "hello"))
                 .build();
         SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(query, Goods.class);
         searchHits.forEach(searchHit -> {

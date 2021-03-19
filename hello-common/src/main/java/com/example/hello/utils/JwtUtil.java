@@ -19,7 +19,7 @@ import java.util.Map;
  * @version 0.2.0-SNAPSHOT
  * @see <a href="https://github.com/auth0/java-jwt">Java JWT</a>
  */
-public class JwtUtil {
+public final class JwtUtil {
 
     /**
      * 默认密钥
