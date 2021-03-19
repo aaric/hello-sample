@@ -1,9 +1,8 @@
 package com.example.hello.msg;
 
 import com.example.hello.TestApp;
+import com.example.hello.utils.FreeMarkerUtil;
 import com.example.hello.utils.RandomUtil;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,17 +50,11 @@ public class MailServiceTests {
 
     @Test
     public void testSendTemplate() throws Exception {
-        Configuration cfg = new Configuration(Configuration.VERSION_2_3_30);
-        cfg.setClassLoaderForTemplateLoading(ClassLoader.getSystemClassLoader(), "/flts");
-        Template sendAuthCodeTemplate = cfg.getTemplate("send_auth_code.flt");
-
-        StringWriter writer = new StringWriter();
         Map<String, String> data = new HashMap<>();
         data.put("code", RandomUtil.nextText(6, false));
         data.put("minutes", "30");
-        sendAuthCodeTemplate.process(data, writer);
-        String html = writer.toString();
 
+        String html = FreeMarkerUtil.process2String("send_auth_code.flt", data);
         mailService.sendHtml("验证码", html, null, "qlhan@incarcloud.com");
     }
 }

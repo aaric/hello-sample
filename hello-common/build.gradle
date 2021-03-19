@@ -10,6 +10,8 @@ dependencies {
 
     implementation "javax.validation:validation-api"
 
+    implementation "org.freemarker:freemarker"
+
     implementation "com.itextpdf:itextpdf"
     implementation "org.xhtmlrenderer:core-renderer"
 }
