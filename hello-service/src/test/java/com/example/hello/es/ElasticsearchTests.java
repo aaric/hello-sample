@@ -70,7 +70,7 @@ public class ElasticsearchTests {
     @Test
     public void testQuery() {
         NativeSearchQuery query = new NativeSearchQueryBuilder()
-                .withQuery(QueryBuilders.matchQuery("members", "hello"))
+                .withQuery(QueryBuilders.matchPhraseQuery("tags", "小学"))
                 .build();
         SearchHits<Goods> searchHits = elasticsearchRestTemplate.search(query, Goods.class);
         searchHits.forEach(searchHit -> {
