@@ -63,3 +63,22 @@
 |20|`@FutureOrPresent`|被注释的元素必须是一个将来的日期时间或者当前日期时间|*例如：date*|
 |21|`@Pattern`|被注释的元素必须符合指定的正则表达式|*例如：string*|
 |22|`@Email`|被注释的元素必须是电子邮箱地址|*例如：email*|
+
+## 四、Actuator端点路径说明
+
+|No.|Method|Path|IsAuth|Remark|
+|:-:|:-|---|:-:|---|
+|1|`GET`|`/actuator/autoconfig`|true|*查看自动配置的使用情况*|
+|2|`GET`|`/actuator/configprops`|true|*查看配置属性，包括默认配置*|
+|3|`GET`|`/actuator/beans`|true|*查看bean及其关系列表*|
+|4|`GET`|`/actuator/dump`|true|*打印线程栈*|
+|5|`GET`|`/actuator/env`|true|*查看所有环境变量*|
+|6|`GET`|`/actuator/env/{name}`|true|*查看具体变量值*|
+|7|`GET`|`/actuator/health`|false|*查看应用健康指标*|
+|8|`GET`|`/actuator/info`|false|*查看应用信息*|
+|9|`GET`|`/actuator/mappings`|true|*查看所有url映射*|
+|10|`GET`|`/actuator/metrics`|true|*查看应用基本指标*|
+|11|`GET`|`/actuator/metrics/{name}`|true|*查看具体指标*|
+|12|`POST`|`/actuator/shutdown`|true|*关闭应用*|
+|13|`GET`|`/actuator/trace`|true|*查看基本追踪信息*|
+|14|`GET`|`/actuator/prometheus`|false|*查看Prometheus格式指标*|
