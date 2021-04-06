@@ -81,4 +81,4 @@
 |11|`GET`|`/actuator/metrics/{name}`|true|*查看具体指标*|
 |12|`POST`|`/actuator/shutdown`|true|*关闭应用*|
 |13|`GET`|`/actuator/trace`|true|*查看基本追踪信息*|
-|14|`GET`|`/actuator/prometheus`|false|*查看Prometheus格式指标*|
+|14|`GET`|`/actuator/prometheus`|false|*查看Prometheus监控指标*|
