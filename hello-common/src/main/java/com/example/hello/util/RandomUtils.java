@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Aaric, created on 2020-12-03T17:47.
  * @version 0.1.0-SNAPSHOT
  */
-public final class RandomUtil {
+public final class RandomUtils {
 
     /**
      * 人类不会混淆的密码字符串数组，排除易混淆字符串：0, 1, l, o, z, I, O, Z
@@ -22,7 +22,7 @@ public final class RandomUtil {
             'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
     };
 
-    private RandomUtil() {
+    private RandomUtils() {
     }
 
     /**

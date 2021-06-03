@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import javax.servlet.http.Cookie;
 
@@ -8,14 +8,14 @@ import javax.servlet.http.Cookie;
  * @author Aaric, created on 2021-01-05T15:21.
  * @version 0.4.0-SNAPSHOT
  */
-public final class CookieUtil {
+public final class CookieUtils {
 
-    private CookieUtil() {
+    private CookieUtils() {
     }
 
     public static String getCookie(String cookieName) {
 
-        Cookie[] cookies = HttpServletUtil.getRequest().getCookies();
+        Cookie[] cookies = HttpServletUtils.getRequest().getCookies();
         if (null != cookies) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(cookieName)) {
@@ -31,7 +31,7 @@ public final class CookieUtil {
         Cookie cookie = new Cookie(cookieName, value);
         cookie.setPath("/");
         cookie.setMaxAge(cookieMaxAge);
-        HttpServletUtil.getResponse().addCookie(cookie);
+        HttpServletUtils.getResponse().addCookie(cookie);
     }
 
     public static void deleteCookie(String cookieName) {

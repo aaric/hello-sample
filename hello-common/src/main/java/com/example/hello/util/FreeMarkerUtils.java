@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -11,7 +11,7 @@ import java.io.StringWriter;
  * @author Aaric, created on 2021-03-19T12:14.
  * @version 0.9.1-SNAPSHOT
  */
-public final class FreeMarkerUtil {
+public final class FreeMarkerUtils {
 
     /**
      * 配置版本

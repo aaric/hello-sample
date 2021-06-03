@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -15,9 +15,9 @@ import java.io.IOException;
  * @author Aaric, created on 2021-01-05T15:20.
  * @version 0.4.0-SNAPSHOT
  */
-public final class HttpServletUtil {
+public final class HttpServletUtils {
 
-    private HttpServletUtil() {
+    private HttpServletUtils() {
     }
 
     /**

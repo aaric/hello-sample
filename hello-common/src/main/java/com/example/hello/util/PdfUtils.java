@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import com.itextpdf.text.pdf.BaseFont;
 import org.xhtmlrenderer.pdf.ITextFontResolver;
@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
  * @author Aaric, created on 2021-03-15T17:29.
  * @version 0.9.0-SNAPSHOT
  */
-public final class PdfUtil {
+public final class PdfUtils {
 
     /**
      * 指定PDF扩展字体

@@ -1,8 +1,7 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -14,14 +13,14 @@ import java.util.Date;
  * @version 0.4.0-SNAPSHOT
  */
 @Slf4j
-public final class DateUtil {
+public final class DateUtils {
 
     /**
      * 日期格式化模式字符串
      */
     public static final String DEFAULT_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
-    private DateUtil() {
+    private DateUtils() {
     }
 
     /**
@@ -54,7 +53,7 @@ public final class DateUtil {
      */
     public static Date parse(String str, String pattern) {
         try {
-            return DateUtils.parseDate(str, pattern);
+            return org.apache.commons.lang3.time.DateUtils.parseDate(str, pattern);
         } catch (ParseException e) {
             log.error("parse exception", e);
         }

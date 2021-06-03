@@ -1,6 +1,6 @@
 package com.example.hello.json.spring;
 
-import com.example.hello.utils.DateUtil;
+import com.example.hello.util.DateUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.Date;
@@ -16,6 +16,6 @@ public class DateAsSecondsConverter implements Converter<String, Date> {
 
     @Override
     public Date convert(String source) {
-        return DateUtil.secondsFrom(source);
+        return DateUtils.secondsFrom(source);
     }
 }

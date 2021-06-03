@@ -1,6 +1,6 @@
 package com.example.hello.json.spring;
 
-import com.example.hello.utils.DateUtil;
+import com.example.hello.util.DateUtils;
 import org.springframework.format.Formatter;
 
 import java.text.ParseException;
@@ -18,11 +18,11 @@ public class DateAsSecondsFormatter implements Formatter<Date> {
 
     @Override
     public Date parse(String text, Locale locale) throws ParseException {
-        return DateUtil.secondsFrom(text);
+        return DateUtils.secondsFrom(text);
     }
 
     @Override
     public String print(Date object, Locale locale) {
-        return String.valueOf(DateUtil.secondsTo(object));
+        return String.valueOf(DateUtils.secondsTo(object));
     }
 }

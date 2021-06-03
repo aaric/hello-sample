@@ -1,8 +1,8 @@
 package com.example.hello.msg;
 
 import com.example.hello.TestApp;
-import com.example.hello.utils.FreeMarkerUtil;
-import com.example.hello.utils.RandomUtil;
+import com.example.hello.util.FreeMarkerUtils;
+import com.example.hello.util.RandomUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -51,10 +51,10 @@ public class MailServiceTests {
     @Test
     public void testSendTemplate() throws Exception {
         Map<String, String> data = new HashMap<>();
-        data.put("code", RandomUtil.nextText(6, false));
+        data.put("code", RandomUtils.nextText(6, false));
         data.put("minutes", "30");
 
-        String html = FreeMarkerUtil.process2String("send_auth_code.flt", data);
+        String html = FreeMarkerUtils.process2String("send_auth_code.flt", data);
         mailService.sendHtml("验证码", html, null, "qlhan@incarcloud.com");
     }
 }
