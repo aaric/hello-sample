@@ -3,7 +3,7 @@ package com.example.hello.api.test.impl;
 import com.example.hello.api.test.TestApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.data.ApiException;
-import com.example.hello.emqx.MqttOutboundChannelService;
+import com.example.hello.emqx.MqttChannelService;
 import com.example.hello.pojo.ValidBean;
 import com.example.hello.validation.groups.Other;
 import lombok.extern.slf4j.Slf4j;
@@ -78,12 +78,12 @@ public class TestController implements TestApi {
     }
 
     @Autowired
-    private MqttOutboundChannelService mqttOutboundChannelService;
+    private MqttChannelService mqttChannelService;
 
     @Override
     @PostMapping("/mqtt")
     public ApiData<String> mqtt(@RequestParam String content) throws Exception {
-        mqttOutboundChannelService.send(content, "mytopic");
+        mqttChannelService.send(content, "mytopic");
         return new ApiData<String>()
                 .setData("ok");
     }
