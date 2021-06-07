@@ -3,17 +3,21 @@ dependencies {
     implementation project(":hello-common")
 
     implementation "org.apache.commons:commons-lang3"
+
     implementation "jakarta.servlet:jakarta.servlet-api"
 
-    implementation "org.springframework:spring-web"
     implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    implementation "org.springframework:spring-web"
+
     implementation "org.springframework.boot:spring-boot-autoconfigure"
-
     implementation "org.springframework.boot:spring-boot-starter-validation"
-
     implementation "org.springframework.boot:spring-boot-starter-mail"
-
     implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch"
+    implementation "org.springframework.boot:spring-boot-starter-integration"
+
+    implementation "org.springframework.integration:spring-integration-stream"
+    implementation "org.springframework.integration:spring-integration-mqtt"
 }
 
 bootRun {

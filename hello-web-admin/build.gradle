@@ -1,6 +1,7 @@
 dependencies {
     implementation project(":hello-pojo")
     implementation project(":hello-common")
+    implementation project(":hello-service")
 
     implementation "org.apache.commons:commons-lang3"
 
