@@ -7,6 +7,8 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * WebSocket测试程序
@@ -19,9 +21,12 @@ import java.io.IOException;
 @ServerEndpoint("/ws/test/{ts}")
 public class WebSocketEndPoint {
 
+    public static final Map<String, Session> WEBSOCKET_SESSIONS = new ConcurrentHashMap<>();
+
     @OnOpen
     public void onOpen(Session session,
                        @PathParam("ts") String ts) {
+        WEBSOCKET_SESSIONS.put(session.getId(), session);
         log.info("onOpen: sessionId={}, ts={}", session.getId(), ts);
     }
 
@@ -39,6 +44,7 @@ public class WebSocketEndPoint {
         } catch (IOException e) {
             log.error("onClose exception", e);
         } finally {
+            WEBSOCKET_SESSIONS.remove(session.getId());
             log.info("onClose: sessionId={}, ts={}", session.getId(), ts);
         }
     }
@@ -50,6 +56,7 @@ public class WebSocketEndPoint {
         } catch (IOException e) {
             log.error("onError exception", e);
         } finally {
+            WEBSOCKET_SESSIONS.remove(session.getId());
             log.info("onError: sessionId={}", session.getId());
         }
     }
