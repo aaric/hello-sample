@@ -45,8 +45,10 @@ spring:
 
 # EMQ X settings
 emqx:
-  username: admin
-  password: public
-  server-uri: tcp://localhost:1883
-  client-id: mymqttid
-  default-topic: mytopic
+  server-uri: tcp://broker.emqx.io:1883
+  client:
+    id: default-server
+    username: admin
+    password: public
+  subscribe:
+    topic: testtopic/#
