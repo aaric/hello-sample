@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * 自定义消息回调接口实现
+ * 默认订阅消息回调接口实现
  *
  * @author Aaric, created on 2021-07-07T16:13.
  * @version 0.12.0-SNAPSHOT
  */
 @Slf4j
 @Component
-public class CustomMqttCallback implements MqttCallbackExtended {
+public class DefaultMqttCallbackImpl implements MqttCallbackExtended {
 
     @Value("${mqtt.subscribe.topic}")
     private String subscribeTopic;
 
     private MqttClient mqttClient;
 
-    public CustomMqttCallback setMqttClient(MqttClient mqttClient) {
+    public DefaultMqttCallbackImpl setMqttClient(MqttClient mqttClient) {
         this.mqttClient = mqttClient;
         return this;
     }

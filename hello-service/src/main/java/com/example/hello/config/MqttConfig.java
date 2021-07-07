@@ -1,6 +1,6 @@
 package com.example.hello.config;
 
-import com.example.hello.emqx.impl.CustomMqttCallback;
+import com.example.hello.emqx.impl.DefaultMqttCallbackImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
@@ -34,13 +34,13 @@ public class MqttConfig {
     private String clientPassword;
 
     @Autowired
-    private CustomMqttCallback customMqttCallback;
+    private DefaultMqttCallbackImpl defaultMqttCallback;
 
     @Bean
     MqttClient mqttClient() {
         try {
             MqttClient client = new MqttClient(serverUri, clientId, new MemoryPersistence());
-            client.setCallback(customMqttCallback.setMqttClient(client));
+            client.setCallback(defaultMqttCallback.setMqttClient(client));
             client.connect(mqttConnectOptions());
 
             return client;
