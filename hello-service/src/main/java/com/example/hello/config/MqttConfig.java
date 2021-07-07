@@ -12,25 +12,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * EMQ X 配置
+ * MQTT 配置
  *
  * @author Aaric, created on 2021-06-07T11:05.
  * @version 0.12.0-SNAPSHOT
  */
 @Slf4j
 @Configuration
-public class EmqxConfig {
+public class MqttConfig {
 
-    @Value("${emqx.server-uri}")
+    @Value("${mqtt.server-uri}")
     private String serverUri;
 
-    @Value("${emqx.client.id}")
+    @Value("${mqtt.client.id}")
     private String clientId;
 
-    @Value("${emqx.client.username}")
+    @Value("${mqtt.client.username}")
     private String clientUsername;
 
-    @Value("${emqx.client.password}")
+    @Value("${mqtt.client.password}")
     private String clientPassword;
 
     @Autowired

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomMqttCallback implements MqttCallbackExtended {
 
-    @Value("${emqx.subscribe.topic}")
+    @Value("${mqtt.subscribe.topic}")
     private String subscribeTopic;
 
     private MqttClient mqttClient;
@@ -43,7 +43,7 @@ public class CustomMqttCallback implements MqttCallbackExtended {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) throws Exception {
-        log.info("{} -> {}, {}, {}", topic, message.getId(), message.getQos(), new String(message.getPayload()));
+        log.info("{} -> {}, {}, \n{}", topic, message.getId(), message.getQos(), new String(message.getPayload()));
     }
 
     @Override

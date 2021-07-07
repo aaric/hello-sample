@@ -43,8 +43,8 @@ spring:
         enabled: true
       #properties.*= # Additional properties used to configure the client.
 
-# EMQ X settings
-emqx:
+# MQTT settings
+mqtt:
   server-uri: tcp://broker.emqx.io:1883
   client:
     id: default-server
