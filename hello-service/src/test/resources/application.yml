@@ -42,3 +42,11 @@ spring:
       repositories:
         enabled: true
       #properties.*= # Additional properties used to configure the client.
+
+# EMQ X settings
+emqx:
+  username: admin
+  password: public
+  server-uri: tcp://localhost:1883
+  client-id: mymqttid
+  default-topic: mytopic

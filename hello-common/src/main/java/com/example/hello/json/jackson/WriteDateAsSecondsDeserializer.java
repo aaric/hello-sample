@@ -1,6 +1,6 @@
 package com.example.hello.json.jackson;
 
-import com.example.hello.utils.DateUtil;
+import com.example.hello.util.DateUtils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -19,6 +19,6 @@ public class WriteDateAsSecondsDeserializer extends JsonDeserializer<Date> {
 
     @Override
     public Date deserialize(JsonParser parser, DeserializationContext context) throws IOException, JsonProcessingException {
-        return DateUtil.secondsFrom(parser.getText());
+        return DateUtils.secondsFrom(parser.getText());
     }
 }

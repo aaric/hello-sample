@@ -3,10 +3,12 @@ package com.example.hello.api.test.impl;
 import com.example.hello.api.test.TestApi;
 import com.example.hello.data.ApiData;
 import com.example.hello.data.ApiException;
+import com.example.hello.emqx.MqttChannelService;
 import com.example.hello.pojo.ValidBean;
 import com.example.hello.validation.groups.Other;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,5 +75,16 @@ public class TestController implements TestApi {
 
         return new ApiData<Long>()
                 .setData(1L);
+    }
+
+    @Autowired
+    private MqttChannelService mqttChannelService;
+
+    @Override
+    @PostMapping("/mqtt")
+    public ApiData<String> mqtt(@RequestParam String content) throws Exception {
+        mqttChannelService.send(content, "mytopic");
+        return new ApiData<String>()
+                .setData("ok");
     }
 }

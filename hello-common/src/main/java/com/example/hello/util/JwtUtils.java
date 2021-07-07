@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @version 0.2.0-SNAPSHOT
  * @see <a href="https://github.com/auth0/java-jwt">Java JWT</a>
  */
-public final class JwtUtil {
+public final class JwtUtils {
 
     /**
      * 默认密钥

@@ -2,8 +2,9 @@
 server:
   port: ${SERVER_PORT:8080}
   undertow:
-    io-threads: ${UNDERTOW_IO_THREADS:1}
-    worker-threads: ${UNDERTOW_WORKER_THREADS:8}
+    threads:
+      io: ${UNDERTOW_IO_THREADS:1}
+      worker: ${UNDERTOW_WORKER_THREADS:8}
     buffer-size: ${UNDERTOW_BUFFER_SIZE:1024}
 
 # Management settings
@@ -61,3 +62,24 @@ spring:
       write-dates-as-timestamps: true
 #  main:
 #    allow-bean-definition-overriding: true
+  mail:
+    default-encoding: UTF-8
+    protocol: smtps
+    host: smtp.exmail.qq.com
+    port: 465
+    username: username@exmail.qq.com
+    password: password
+    test-connection: false
+    properties:
+      mail.smtp.auth: true
+  elasticsearch:
+    rest:
+      uris: [ "127.0.0.1:9200" ]
+      connection-timeout: 15s
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
+      repositories:
+        enabled: true
+      #properties.*= # Additional properties used to configure the client.

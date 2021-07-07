@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;
@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * JwtUtilTests
+ * JwtUtilsTests
  *
  * @author Aaric, created on 2020-12-07T21:13.
  * @version 0.2.0-SNAPSHOT
  */
 @Slf4j
-public class JwtUtilTests {
+public class JwtUtilsTests {
 
     @Test
     public void testCreateToken() {
@@ -26,7 +26,7 @@ public class JwtUtilTests {
         payload.put("oid", 1);
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 7);
-        String token = JwtUtil.createToken(payload, cal.getTime());
+        String token = JwtUtils.createToken(payload, cal.getTime());
         log.info("token: {}", token);
         Assertions.assertNotNull(token);
     }
@@ -35,7 +35,7 @@ public class JwtUtilTests {
     @Disabled
     public void testCheckToken() {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwib2lkIjoxLCJleHAiOjE2MDc5NTM2MjB9.cB2Zreukxq3_J4bkjpQU_Koz3lu087ToEsdcD6yfPfQ";
-        DecodedJWT jwt = JwtUtil.verifyToken(token);
+        DecodedJWT jwt = JwtUtils.verifyToken(token);
         log.info("id: {}, oid: {}", jwt.getClaim("id").asLong(),
                 jwt.getClaim("oid").asInt());
         Assertions.assertNotNull(jwt);

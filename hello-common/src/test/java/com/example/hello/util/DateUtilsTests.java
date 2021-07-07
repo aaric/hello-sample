@@ -1,4 +1,4 @@
-package com.example.hello.utils;
+package com.example.hello.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -7,40 +7,40 @@ import org.junit.jupiter.api.Test;
 import java.util.Date;
 
 /**
- * DateUtilTests
+ * DateUtilsTests
  *
  * @author Aaric, created on 2021-01-05T17:54.
  * @version 0.4.0-SNAPSHOT
  */
 @Slf4j
-public class DateUtilTests {
+public class DateUtilsTests {
 
     @Test
     public void testFormat() {
-        String str = DateUtil.format(new Date(), "yyyy-MM-dd");
+        String str = DateUtils.format(new Date(), "yyyy-MM-dd");
         log.info("str: {}", str);
         Assertions.assertNotNull(str);
 
-        str = DateUtil.format(new Date());
+        str = DateUtils.format(new Date());
         log.info("str: {}", str);
         Assertions.assertNotNull(str);
     }
 
     @Test
     public void testParse() {
-        Date date = DateUtil.parse("2021-01-06 00:00:00");
+        Date date = DateUtils.parse("2021-01-06 00:00:00");
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
 
-        date = DateUtil.parse("2021-01-06", "yyyy-MM-dd");
+        date = DateUtils.parse("2021-01-06", "yyyy-MM-dd");
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
     }
 
     @Test
     public void testSecondsTo() {
-        Date date = DateUtil.parse("2021-01-06 00:00:00");
-        long seconds = DateUtil.secondsTo(date);
+        Date date = DateUtils.parse("2021-01-06 00:00:00");
+        long seconds = DateUtils.secondsTo(date);
         log.info("seconds: {}", seconds);
 //        Assertions.assertEquals(1609862400, seconds);
     }
@@ -48,12 +48,12 @@ public class DateUtilTests {
     @Test
     public void testSecondsFrom() {
         long seconds = 1609862400L;
-        Date date = DateUtil.secondsFrom(seconds);
+        Date date = DateUtils.secondsFrom(seconds);
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
 
         String text = "1609862400";
-        date = DateUtil.secondsFrom(text);
+        date = DateUtils.secondsFrom(text);
         log.info("date: {}", date);
         Assertions.assertNotNull(date);
     }

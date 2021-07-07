@@ -31,4 +31,7 @@ public interface TestApi {
 
     @ApiOperation("数据校验（自定义）")
     ApiData<Long> validCustom(@ApiParam(value = "用户档案") ValidBean validBean) throws Exception;
+
+    @ApiOperation("MQTT")
+    ApiData<String> mqtt(@ApiParam(value = "内容") String content) throws Exception;
 }

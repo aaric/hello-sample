@@ -1,6 +1,6 @@
 package com.example.hello.json.jackson;
 
-import com.example.hello.utils.DateUtil;
+import com.example.hello.util.DateUtils;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -19,7 +19,7 @@ public class WriteDateAsSecondsSerializer extends JsonSerializer<Date> {
     @Override
     public void serialize(Date value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         if (null != value) {
-            gen.writeNumber(String.valueOf(DateUtil.secondsTo(value)));
+            gen.writeNumber(String.valueOf(DateUtils.secondsTo(value)));
         }
     }
 }
