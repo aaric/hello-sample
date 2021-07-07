@@ -5,7 +5,7 @@
 [![spring](https://img.shields.io/badge/springboot-2.3.2-brightgreen.svg?style=flat&logo=spring)](https://docs.spring.io/spring-boot/docs/2.3.x-SNAPSHOT/reference/htmlsingle)
 [![gradle](https://img.shields.io/badge/gradle-6.7-brightgreen.svg?style=flat&logo=gradle)](https://docs.gradle.org/6.7/userguide/installation.html)
 [![build](https://github.com/aaric/hello-sample/workflows/build/badge.svg)](https://github.com/aaric/hello-sample/actions)
-[![release](https://img.shields.io/badge/release-0.11.0-blue.svg)](https://github.com/aaric/hello-sample/releases)
+[![release](https://img.shields.io/badge/release-0.12.0-blue.svg)](https://github.com/aaric/hello-sample/releases)
 
 > Hello Example.
 
