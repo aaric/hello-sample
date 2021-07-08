@@ -83,3 +83,13 @@ spring:
       repositories:
         enabled: true
       #properties.*= # Additional properties used to configure the client.
+
+# MQTT settings
+mqtt:
+  server-uri: tcp://broker.emqx.io:1883
+  client:
+    id: default-server
+    username: admin
+    password: public
+  subscribe:
+    topic: testtopic/#

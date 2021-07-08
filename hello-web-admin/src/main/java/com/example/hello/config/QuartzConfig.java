@@ -1,12 +1,8 @@
 package com.example.hello.config;
 
-import com.example.hello.web.ws.WebSocketEndPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-
-import java.io.IOException;
 
 /**
  * Quartz配置
@@ -19,8 +15,8 @@ import java.io.IOException;
 @EnableScheduling
 public class QuartzConfig {
 
-    @Scheduled(cron = "*/1 * * * * ?")
-    void sentWsMsg() {
+    //@Scheduled(cron = "*/1 * * * * ?")
+    /*void sentWsMsg() {
         WebSocketEndPoint.WEBSOCKET_SESSIONS.forEach((id, session) -> {
             if (session.isOpen()) {
                 try {
@@ -31,5 +27,5 @@ public class QuartzConfig {
                 }
             }
         });
-    }
+    }*/
 }

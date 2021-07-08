@@ -33,5 +33,6 @@ public interface TestApi {
     ApiData<Long> validCustom(@ApiParam(value = "用户档案") ValidBean validBean) throws Exception;
 
     @ApiOperation("MQTT")
-    ApiData<String> mqtt(@ApiParam(value = "内容") String content) throws Exception;
+    ApiData<String> mqtt(@ApiParam(value = "主题") String topic,
+                         @ApiParam(value = "消息内容") String content) throws Exception;
 }
