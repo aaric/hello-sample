@@ -43,7 +43,7 @@ public class Knife4jConfig implements InitializingBean {
                 .apiInfo(apiInfo())
                 .directModelSubstitute(Date.class, Long.class)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.hello"))
                 .paths(PathSelectors.any())
                 .build();
     }
