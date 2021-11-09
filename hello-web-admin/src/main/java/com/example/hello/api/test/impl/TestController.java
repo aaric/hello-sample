@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.filter.EqualsFilter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.*;
@@ -87,5 +89,21 @@ public class TestController implements TestApi {
         boolean flag = mqttPublishService.publish(topic, content);
         return new ApiData<String>()
                 .setData(String.valueOf(flag));
+    }
+
+    @Autowired
+    private LdapTemplate ldapTemplate;
+
+    @Override
+    @PostMapping("/ldap")
+    public ApiData<Boolean> ldap(String account, String secret) throws Exception {
+        ldapTemplate.setIgnorePartialResultException(true);
+
+        EqualsFilter filter = new EqualsFilter("cn", account);
+        boolean flag = ldapTemplate.authenticate("ou=testdc", filter.toString(), secret);
+        log.debug("{} login: {}", account, flag);
+
+        return new ApiData<Boolean>()
+                .setData(flag);
     }
 }

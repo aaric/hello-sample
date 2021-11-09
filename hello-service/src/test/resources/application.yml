@@ -47,8 +47,8 @@ spring:
 mqtt:
   server-uri: tcp://broker.emqx.io:1883
   client:
-    id: default-server
+    id: server-default
     username: admin
-    password: public
+    password: admin123
   subscribe:
-    topic: testtopic/#
+    topic: /im/server/default

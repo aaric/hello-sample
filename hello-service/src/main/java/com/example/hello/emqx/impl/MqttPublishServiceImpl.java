@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component;
 import java.nio.charset.StandardCharsets;
 
 /**
- * hello title
+ * MQTT 发布消息服务接口实现
  *
  * @author Aaric, created on 2021-07-07T17:21.
- * @version 0.1.0-SNAPSHOT
+ * @version 0.12.0-SNAPSHOT
  */
 @Slf4j
 @Component

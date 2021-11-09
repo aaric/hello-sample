@@ -14,7 +14,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-undertow"
     implementation "org.springframework.boot:spring-boot-starter-validation"
 
-    implementation "com.github.xiaoymin:knife4j-spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-data-ldap"
 
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "io.micrometer:micrometer-registry-prometheus"

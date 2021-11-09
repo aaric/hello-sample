@@ -35,4 +35,8 @@ public interface TestApi {
     @ApiOperation("MQTT")
     ApiData<String> mqtt(@ApiParam(value = "主题") String topic,
                          @ApiParam(value = "消息内容") String content) throws Exception;
+
+    @ApiOperation("LDAP")
+    ApiData<Boolean> ldap(@ApiParam(value = "用户名") String account,
+                          @ApiParam(value = "密码") String secret) throws Exception;
 }

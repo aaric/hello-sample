@@ -43,7 +43,7 @@ public class Knife4jConfig implements InitializingBean {
                 .apiInfo(apiInfo())
                 .directModelSubstitute(Date.class, Long.class)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.hello"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -54,7 +54,7 @@ public class Knife4jConfig implements InitializingBean {
                 .description("Spring Boot 2.3.x框架集成测试")
                 .termsOfServiceUrl(MessageFormat.format("http://{0}:{1}/doc.html", serverHost, serverPort))
                 .contact(new Contact("Aaric", "", "vipaaric@gmail.com"))
-                .version("0.12.0")
+                .version("0.13.0")
                 .build();
     }
 
