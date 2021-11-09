@@ -9,10 +9,10 @@
 
 > Hello Example.
 
-## 一、子模块命名规范
+## 1 子模块命名规范
 
 |No.|Name|Path|Remark|
-|:-:|----|----|------|
+|:---:|-----|-----|-----|
 |1|`hello-pojo`||*实体模块*|
 |2|`hello-common`||*共享模块*|
 |3|`hello-service-*`||*业务层*|
@@ -20,7 +20,7 @@
 |5|`hello-web-portal`|`/api/v1/portal/...`|*门户API*|
 |6|`hello-web-applet`|`/api/v1/applet/...`|*小程序API*|
 
-## 二、`API` 规范遵循 `RESTFul` 风格
+## 2 `API` 规范遵循 `RESTFul` 风格
 
 > 请求路径命名遵循`/api/{version}/{endpoint}/{package}/{class}`规则，例如：`/api/v1/admin/system/file`  
 > `version`：*版本信息，例如：`v1`、`v2`等*  
@@ -29,7 +29,7 @@
 > `class`：*功能，即类名，例如：`file`、`user`等*
 
 |No.|Operating|Http Method|Remark|
-|:-:|---------|-----------|------|
+|:---:|-----|-----|-----|
 |1|`Create`|*POST*|`curl -X POST /api/v1/admin/system/file -d {}`|
 |2|`Delete`|*DELETE*|`curl -X DELETE /api/v1/admin/system/file/{id}`|
 |3|`Modify`|*PUT*|`curl -X PUT /api/v1/admin/system/file -d {}`|
@@ -37,10 +37,10 @@
 |5|`Get One`|*GET*|`curl -X GET /api/v1/admin/system/file/{id}`|
 |6|`Page`|*POST*|`curl -X POST /api/v1/admin/system/file/{index}/{size} -d {}`|
 
-## 三、Validation内置校验注解说明
+## 3 Validation内置校验注解说明
 
 |No.|Name|Usage|Remark|
-|:-:|:-:|---|---|
+|:---:|:---:|-----|-----|
 |1|`@Null`|被注释的元素必须为null|*例如：extendId*|
 |2|`@NotNull`|被注释的元素不能为null|*例如：username*|
 |3|`@NotEmpty`|被注释的字符串的必须非空，可以是空白字符串|*例如：username*|
@@ -64,10 +64,10 @@
 |21|`@Pattern`|被注释的元素必须符合指定的正则表达式|*例如：string*|
 |22|`@Email`|被注释的元素必须是电子邮箱地址|*例如：email*|
 
-## 四、Actuator端点路径说明
+## 4 Actuator端点路径说明
 
 |No.|Method|Path|IsAuth|Remark|
-|:-:|:-|---|:-:|---|
+|:---:|:---|-----|:---:|-----|
 |1|`GET`|`/actuator/autoconfig`|true|*查看自动配置的使用情况*|
 |2|`GET`|`/actuator/configprops`|true|*查看配置属性，包括默认配置*|
 |3|`GET`|`/actuator/beans`|true|*查看bean及其关系列表*|
@@ -82,3 +82,28 @@
 |12|`POST`|`/actuator/shutdown`|true|*关闭应用*|
 |13|`GET`|`/actuator/trace`|true|*查看基本追踪信息*|
 |14|`GET`|`/actuator/prometheus`|false|*查看Prometheus监控指标*|
+
+## 5 LADPSearch
+
+### 5.1 Install
+
+```bash
+yum install -y openldap-clients
+```
+
+### 5.2 Login
+
+#### 5.2.1 admin
+
+> password -> `admin123`
+
+```bash
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -W
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -w admin123
+```
+
+#### 5.2.2 other users
+
+```bash
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" -w testuser -x -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
+```
