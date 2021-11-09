@@ -126,7 +126,7 @@ yum install -y openldap-clients
 
 #### 5.2.2 Login
 
-##### 5.2.1 admin
+##### 5.2.2.1 admin
 
 > password -> `admin123`
 
@@ -137,7 +137,7 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
   -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -w admin123
 ```
 
-##### 5.2.2 other users
+##### 5.2.2.2 other users
 
 ```bash
 ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
