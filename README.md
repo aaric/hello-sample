@@ -141,6 +141,5 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
 
 ```bash
 ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
-  -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" \
-  -x -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
+  -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
 ```
