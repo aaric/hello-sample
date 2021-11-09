@@ -85,25 +85,62 @@
 
 ## 5 LADPSearch
 
-### 5.1 Install
+### 5.1 Server
+
+```bash
+cat > docker-compose.yaml <<-'EOF'
+version: '3'
+services:
+  openldap:
+    image: bitnami/openldap:2.5
+    container_name: openldap_community_edition
+#    volumes:
+#      - ./openldap_data:/bitnami/openldap
+    environment:
+      - LDAP_ROOT=dc=ldaptest,dc=com
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin123
+      - LDAP_USER_DC=testdc
+      - LDAP_GROUP=testgroup
+      - LDAP_USERS=testuser
+      - LDAP_PASSWORDS=testuser
+    ports:
+      - 1389:1389
+      - 1636:1636
+    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+EOF
+docker-compose up -d
+```
+
+### 5.2 Client
+
+#### 5.2.1 Install
 
 ```bash
 yum install -y openldap-clients
 ```
 
-### 5.2 Login
+#### 5.2.2 Login
 
-#### 5.2.1 admin
+##### 5.2.1 admin
 
 > password -> `admin123`
 
 ```bash
-ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -W
-ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -w admin123
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
+  -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -W
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
+  -D "cn=admin,dc=ldaptest,dc=com" -b "dc=ldaptest,dc=com" -w admin123
 ```
 
-#### 5.2.2 other users
+##### 5.2.2 other users
 
 ```bash
-ldapsearch -LLL -x -H ldap://127.0.0.1:1389 -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" -w testuser -x -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
+ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
+  -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" \
+  -x -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
 ```
