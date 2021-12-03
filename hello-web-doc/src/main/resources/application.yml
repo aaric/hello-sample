@@ -36,7 +36,7 @@ files:
     history:
       postfix: -hist
     url:
-      site: https://documentserver/
+      site: ${DOCUMENTSERVER_SITE:https://documentserver/}
       converter: ConvertService.ashx
       command: coauthoring/CommandService.ashx
       api: web-apps/apps/api/documents/api.js

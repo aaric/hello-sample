@@ -10,3 +10,7 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "org.modelmapper:modelmapper:2.4.2"
 }
+
+bootJar {
+    exclude "**/**-dev.yml"
+}
