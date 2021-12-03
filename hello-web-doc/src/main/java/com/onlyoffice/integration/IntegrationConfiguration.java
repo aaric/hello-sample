@@ -32,7 +32,7 @@ import javax.annotation.PostConstruct;
 @Configuration
 public class IntegrationConfiguration {
 
-    @Value("${files.storage}")
+    @Value("${files.storage.address}")
     private String storageAddress;
 
     @Autowired

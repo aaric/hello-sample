@@ -22,7 +22,7 @@ allprojects {
 
 subprojects {
     apply plugin: "java"
-    apply plugin: "checkstyle"
+//    apply plugin: "checkstyle"
     apply plugin: "io.freefair.lombok"
     apply plugin: "io.spring.dependency-management"
     apply plugin: "org.springframework.boot"
@@ -90,16 +90,16 @@ subprojects {
         useJUnitPlatform()
     }
 
-    task checkstyle(type: Checkstyle) {
-        configFile file("${rootDir}/config/checkstyle/checkstyle.xml")
-        ignoreFailures true
-        showViolations true
-        source = fileTree("src")
-        include "**/*.java"
-        exclude "**/test/**"
-        exclude "**/build/**"
-        classpath = files()
-    }
+//    task checkstyle(type: Checkstyle) {
+//        configFile file("${rootDir}/config/checkstyle/checkstyle.xml")
+//        ignoreFailures true
+//        showViolations true
+//        source = fileTree("src")
+//        include "**/*.java"
+//        exclude "**/test/**"
+//        exclude "**/build/**"
+//        classpath = files()
+//    }
 
     task removeLombokConfig() {
         def subProjectPath = project.projectDir

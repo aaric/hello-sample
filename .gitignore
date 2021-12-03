@@ -11,3 +11,4 @@ bootstrap-*.yml
 Thumbs.db
 out/
 lombok.*
+tmp-documents/
