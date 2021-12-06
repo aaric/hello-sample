@@ -143,3 +143,7 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
 ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
   -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
 ```
+
+## 6 OnlyOffice
+
+> [Java with Spring Boot](https://api.onlyoffice.com/editors/example/javaspring)
