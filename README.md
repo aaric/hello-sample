@@ -156,6 +156,10 @@ map $http_upgrade $connection_upgrade {
     '' close;
 }
 
+upstream onlydoc-servers {
+    server 10.0.11.25:4000;
+}
+
 upstream onlyoffice-servers {
     server 10.0.11.25:8080;
 }
@@ -166,6 +170,16 @@ server {
 
     charset utf-8;
 
+    # http -> integration
+    location ^~ /onlydoc/ {
+        proxy_pass http://onlydoc-servers/;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlydoc;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # http -> all
     location ^~ /onlyoffice/ {
         proxy_pass http://onlyoffice-servers/;
         proxy_http_version 1.1;
@@ -190,6 +204,10 @@ map $http_upgrade $connection_upgrade {
     '' close;
 }
 
+upstream onlydoc-servers {
+    server 10.0.11.25:4000;
+}
+
 upstream onlyoffice-servers {
     server 127.0.0.1:8080;
 }
@@ -199,6 +217,15 @@ server {
     server_name localhost;
 
     charset utf-8;
+
+    # http -> integration
+    location ^~ /onlydoc/ {
+        proxy_pass http://onlydoc-servers/;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlydoc;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
 
     # http -> all
     location ^~ /onlyoffice/ {

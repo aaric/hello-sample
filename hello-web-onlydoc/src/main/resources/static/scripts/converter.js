@@ -22,7 +22,7 @@ var UrlConverter;
 var UrlEditor;
 
 if (typeof jQuery !== "undefined") {
-    jQuery.post('/config',
+    jQuery.post('config',
         function(data) {
             ConverExtList = data.ConverExtList;
             EditedExtList = data.EditedExtList;
