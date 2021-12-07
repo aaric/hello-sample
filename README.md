@@ -147,3 +147,59 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
 ## 6 OnlyOffice
 
 > [Java with Spring Boot](https://api.onlyoffice.com/editors/example/javaspring)
+
+```nginx
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+upstream onlyoffice-servers {
+    server 10.0.11.25:8080;
+}
+
+server {
+    listen       18080;
+    server_name localhost;
+
+    charset utf-8;
+
+    # http -> all
+    location ^~ /onlyoffice/ {
+        proxy_pass http://onlyoffice-servers/;
+        proxy_redirect off;
+        proxy_set_header Host $host:$server_port;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Referer $http_referer;
+    }
+
+    # http -> rewrite
+    location ^~ /onlyoffice/web-apps/ {
+        rewrite ^/onlyoffice/web-apps/(.*)$ /onlyoffice/6.4.2-6/web-apps/$1 redirect;
+    }
+
+    # http -> prefix
+    location ^~ /cache/files {
+        proxy_pass http://onlyoffice-servers;
+        proxy_set_header Host $host:$server_port;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Referer $http_referer;
+    }
+
+    # websocket
+    location ^~ /onlyoffice/6.4.2-6/doc/ {
+        proxy_pass http://onlyoffice-servers/6.4.2-6/doc/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host:$server_port;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_connect_timeout 15s;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 60s;
+    }
+}
+```
