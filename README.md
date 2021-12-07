@@ -5,7 +5,7 @@
 [![spring](https://img.shields.io/badge/springboot-2.3.2-brightgreen.svg?style=flat&logo=spring)](https://docs.spring.io/spring-boot/docs/2.3.x-SNAPSHOT/reference/htmlsingle)
 [![gradle](https://img.shields.io/badge/gradle-7.2-brightgreen.svg?style=flat&logo=gradle)](https://docs.gradle.org/7.2/userguide/installation.html)
 [![build](https://github.com/aaric/hello-sample/workflows/build/badge.svg)](https://github.com/aaric/hello-sample/actions)
-[![release](https://img.shields.io/badge/release-0.13.0-blue.svg)](https://github.com/aaric/hello-sample/releases)
+[![release](https://img.shields.io/badge/release-0.14.0-blue.svg)](https://github.com/aaric/hello-sample/releases)
 
 > Hello Example.
 
@@ -142,4 +142,118 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
 ```bash
 ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
   -D "cn=testuser,ou=testdc,dc=ldaptest,dc=com" -b "ou=testdc,dc=ldaptest,dc=com" -w testuser
+```
+
+## 6 OnlyOffice
+
+> [Java with Spring Boot](https://api.onlyoffice.com/editors/example/javaspring)
+
+### 6.1 Nginx V1 (**Recommend**)
+
+```nginx
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+upstream onlydoc-servers {
+    server 10.0.11.25:4000;
+}
+
+upstream onlyoffice-servers {
+    server 10.0.11.25:8080;
+}
+
+server {
+    listen       18080;
+    server_name localhost;
+
+    charset utf-8;
+
+    # http -> integration
+    location ^~ /onlydoc/ {
+        proxy_pass http://onlydoc-servers/;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlydoc;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # http -> all
+    location ^~ /onlyoffice/ {
+        proxy_pass http://onlyoffice-servers/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_connect_timeout 15s;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 60s;
+    }
+}
+```
+
+### 6.2 Nginx V2 (**Key Path**)
+
+```nginx
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+upstream onlydoc-servers {
+    server 10.0.11.25:4000;
+}
+
+upstream onlyoffice-servers {
+    server 127.0.0.1:8080;
+}
+
+server {
+    listen       18080;
+    server_name localhost;
+
+    charset utf-8;
+
+    # http -> integration
+    location ^~ /onlydoc/ {
+        proxy_pass http://onlydoc-servers/;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlydoc;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # http -> all
+    location ^~ /onlyoffice/ {
+        proxy_pass http://onlyoffice-servers/;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # http -> rewrite
+    location ^~ /onlyoffice/web-apps/ {
+        rewrite ^/onlyoffice/web-apps/(.*)$ /onlyoffice/6.4.2-6/web-apps/$1 redirect;
+    }
+
+    # websocket
+    location ^~ /onlyoffice/6.4.2-6/doc/ {
+        proxy_pass http://onlyoffice-servers/6.4.2-6/doc/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_connect_timeout 15s;
+        proxy_read_timeout 120s;
+        proxy_send_timeout 60s;
+    }
+}
 ```
