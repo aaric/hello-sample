@@ -203,7 +203,6 @@ server {
     # http -> all
     location ^~ /onlyoffice/ {
         proxy_pass http://onlyoffice-servers/;
-        proxy_redirect off;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
