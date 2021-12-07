@@ -155,7 +155,7 @@ map $http_upgrade $connection_upgrade {
 }
 
 upstream onlyoffice-servers {
-    server 10.0.11.25:8080;
+    server 127.0.0.1:8080;
 }
 
 server {
