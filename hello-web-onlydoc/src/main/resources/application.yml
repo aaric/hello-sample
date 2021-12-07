@@ -7,7 +7,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: hello-web-doc
+    name: hello-web-onlydoc
   datasource:
     url: jdbc:h2:mem:usersdb
     driverClassName: org.h2.Driver
