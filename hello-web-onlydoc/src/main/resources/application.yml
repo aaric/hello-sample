@@ -55,6 +55,6 @@ url:
 
 # Logo settings
 logo:
-  image:
-  imageEmbedded:
-  url: https://www.onlyoffice.com
+  image: ${LOGO_IMAGE:""}
+  imageEmbedded: ${LOGO_IMAGE_EMBEDDED:""}
+  url: ${LOGO_URL:https://www.onlyoffice.com}

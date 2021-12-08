@@ -135,12 +135,16 @@ public class EditorController {
             Document document = fileModel.getDocument();
             document.setKey(fileName);
             document.setUrl(fileUrl);
+            document.getPermissions().setEdit(false);
+            document.getPermissions().setComment(false);
 
             EditorConfig editorConfig = fileModel.getEditorConfig();
             if (StringUtils.isBlank(displayName)) {
                 displayName = "匿名";
             }
             editorConfig.getUser().setName(displayName);
+            editorConfig.getCustomization().setChat(false);
+            editorConfig.getCustomization().setComments(false);
 
             logger.info("{} -> {}: {}", displayName, document.getKey(), document.getUrl());
         }
