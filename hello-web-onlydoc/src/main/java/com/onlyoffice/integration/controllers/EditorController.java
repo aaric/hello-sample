@@ -23,6 +23,8 @@ import com.onlyoffice.integration.documentserver.managers.jwt.JwtManager;
 import com.onlyoffice.integration.documentserver.models.enums.Action;
 import com.onlyoffice.integration.documentserver.models.enums.Language;
 import com.onlyoffice.integration.documentserver.models.enums.Type;
+import com.onlyoffice.integration.documentserver.models.filemodel.Document;
+import com.onlyoffice.integration.documentserver.models.filemodel.EditorConfig;
 import com.onlyoffice.integration.documentserver.models.filemodel.FileModel;
 import com.onlyoffice.integration.documentserver.storage.FileStoragePathBuilder;
 import com.onlyoffice.integration.dto.Mentions;
@@ -31,6 +33,9 @@ import com.onlyoffice.integration.services.UserServices;
 import com.onlyoffice.integration.services.configurers.FileConfigurer;
 import com.onlyoffice.integration.services.configurers.wrappers.DefaultFileWrapper;
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -45,6 +50,8 @@ import java.util.*;
 @CrossOrigin("*")
 @Controller
 public class EditorController {
+
+    private Logger logger = LoggerFactory.getLogger(EditorController.class);
 
     @Value("${files.docservice.url.site}")
     private String docserviceSite;
@@ -75,8 +82,13 @@ public class EditorController {
                         @RequestParam(value = "action", required = false) String actionParam,
                         @RequestParam(value = "type", required = false) String typeParam,
                         @RequestParam(value = "actionLink", required = false) String actionLink,
-                        @CookieValue(value = "uid") String uid,
-                        @CookieValue(value = "ulang") String lang,
+                        @RequestParam(value = "fileKey", required = false) String fileKey,
+                        @RequestParam(value = "fileUrl", required = false) String fileUrl,
+                        @RequestParam(value = "thirdUri", required = false) Boolean thirdUri,
+                        @RequestParam(value = "lang", required = false) String lang,
+                        @RequestParam(value = "displayName", required = false) String displayName,
+                        @CookieValue(value = "uid", required = false) String uid,
+                        @CookieValue(value = "ulang", required = false) String ulang,
                         Model model) throws JsonProcessingException {
         Action action = Action.edit;
         Type type = Type.desktop;
@@ -90,6 +102,13 @@ public class EditorController {
         }
         if (lang != null) {
             language = Language.valueOf(lang);
+        } else if (ulang != null) {
+            language = Language.valueOf(ulang);
+        }
+
+        // Third UID
+        if (StringUtils.isBlank(uid)) {
+            uid = "0";
         }
 
         Optional<User> optionalUser = userService.findUserById(Integer.parseInt(uid));
@@ -111,6 +130,29 @@ public class EditorController {
                         .actionData(actionLink)
                         .build()
         );
+
+        // Third URI
+        if (null != thirdUri && thirdUri) {
+            Document document = fileModel.getDocument();
+            if (StringUtils.isNotBlank(fileKey)) {
+                document.setKey(fileKey);
+            } else {
+                document.setKey(fileName);
+            }
+            document.setUrl(fileUrl);
+            document.getPermissions().setEdit(false);
+            document.getPermissions().setComment(false);
+
+            EditorConfig editorConfig = fileModel.getEditorConfig();
+            if (StringUtils.isBlank(displayName)) {
+                displayName = "匿名";
+            }
+            editorConfig.getUser().setName(displayName);
+            editorConfig.getCustomization().setChat(false);
+            editorConfig.getCustomization().setComments(false);
+
+            logger.info("{} -> {}: {}", displayName, document.getKey(), document.getUrl());
+        }
 
         model.addAttribute("model", fileModel);
         model.addAttribute("fileHistory", historyManager.getHistory(fileModel.getDocument()));

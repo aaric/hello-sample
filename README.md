@@ -5,7 +5,7 @@
 [![spring](https://img.shields.io/badge/springboot-2.3.2-brightgreen.svg?style=flat&logo=spring)](https://docs.spring.io/spring-boot/docs/2.3.x-SNAPSHOT/reference/htmlsingle)
 [![gradle](https://img.shields.io/badge/gradle-7.2-brightgreen.svg?style=flat&logo=gradle)](https://docs.gradle.org/7.2/userguide/installation.html)
 [![build](https://github.com/aaric/hello-sample/workflows/build/badge.svg)](https://github.com/aaric/hello-sample/actions)
-[![release](https://img.shields.io/badge/release-0.14.0-blue.svg)](https://github.com/aaric/hello-sample/releases)
+[![release](https://img.shields.io/badge/release-0.14.1-blue.svg)](https://github.com/aaric/hello-sample/releases)
 
 > Hello Example.
 
@@ -148,7 +148,9 @@ ldapsearch -LLL -x -H ldap://127.0.0.1:1389 \
 
 > [Java with Spring Boot](https://api.onlyoffice.com/editors/example/javaspring)
 
-### 6.1 Nginx V1 (**Recommend**)
+### 6.1 Nginx
+
+#### 6.1.1 Simple (**Recommend**)
 
 ```nginx
 map $http_upgrade $connection_upgrade {
@@ -173,10 +175,12 @@ server {
     # http -> integration
     location ^~ /onlydoc/ {
         proxy_pass http://onlydoc-servers/;
+        proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlydoc;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-PORT $remote_port;
     }
 
     # http -> all
@@ -185,10 +189,12 @@ server {
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-PORT $remote_port;
         proxy_connect_timeout 15s;
         proxy_read_timeout 120s;
         proxy_send_timeout 60s;
@@ -196,7 +202,7 @@ server {
 }
 ```
 
-### 6.2 Nginx V2 (**Key Path**)
+#### 6.1.2 Complex (**Key Path**)
 
 ```nginx
 map $http_upgrade $connection_upgrade {
@@ -221,19 +227,23 @@ server {
     # http -> integration
     location ^~ /onlydoc/ {
         proxy_pass http://onlydoc-servers/;
+        proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlydoc;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-PORT $remote_port;
     }
 
     # http -> all
     location ^~ /onlyoffice/ {
         proxy_pass http://onlyoffice-servers/;
+        proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-PORT $remote_port;
     }
 
     # http -> rewrite
@@ -247,13 +257,23 @@ server {
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-Host $http_host/onlyoffice;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-PORT $remote_port;
         proxy_connect_timeout 15s;
         proxy_read_timeout 120s;
         proxy_send_timeout 60s;
     }
 }
 ```
+
+### 6.2 Testing
+
+|No.|File|Link|Remark|
+|:---:|:---:|:---:|-----|
+|1|[test.xlsx](http://10.0.11.25:9333/1,01fc39db1909)|[Excel](http://localhost:4000/editor?action=view&fileName=test.xlsx&fileKey=test2xlsx&fileUrl=http://10.0.11.25:9333/1,01fc39db1909&thirdUri=true&lang=zh&displayName=张三)|*Not Support PDF*|
+|2|[test.docx](http://10.0.11.25:9333/6,01fe0f8fd5a4)|[Word](http://localhost:4000/editor?action=view&fileName=test.docx&fileKey=test2docx&fileUrl=http://10.0.11.25:9333/6,01fe0f8fd5a4&thirdUri=true&lang=zh&displayName=张三)||
+|3|[test.pptx](http://10.0.11.25:9333/6,01ff978bc1c3)|[PowerPoint](http://localhost:4000/editor?action=view&fileName=test.pptx&fileKey=test2pptx&fileUrl=http://10.0.11.25:9333/6,01ff978bc1c3&thirdUri=true&lang=zh&displayName=张三)||

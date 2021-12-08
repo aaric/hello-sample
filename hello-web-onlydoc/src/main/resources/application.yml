@@ -1,6 +1,6 @@
 # Tomcat settings
 server:
-  port: 4000
+  port: ${SERVER_PORT:4000}
 
 # Spring settings
 spring:
@@ -55,6 +55,6 @@ url:
 
 # Logo settings
 logo:
-  image:
-  imageEmbedded:
-  url: https://www.onlyoffice.com
+  image: ${LOGO_IMAGE:""}
+  imageEmbedded: ${LOGO_IMAGE_EMBEDDED:""}
+  url: ${LOGO_URL:https://www.onlyoffice.com}

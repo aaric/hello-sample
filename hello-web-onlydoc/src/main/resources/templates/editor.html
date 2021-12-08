@@ -103,16 +103,14 @@
                 };
 
                 var config = [[${model}]];
-                //config.document.key = "test.xlsx";
-                //config.document.url = "http://10.0.11.25:9333/1,01fc39db1909";
-                //config.document.key = "test.docx";
-                //config.document.url = "http://10.0.11.25:9333/6,01fe0f8fd5a4";
-                //config.document.key = "test.pptx";
-                //config.document.url = "http://10.0.11.25:9333/6,01ff978bc1c3";
+                //console.log(config.document.key + " -> " + config.document.url);
 
                 if (config.editorConfig.user.name == "Anonymous") {
                     config.editorConfig.user.name = "";
                 }
+                //config.editorConfig.user.name = [[${#httpServletRequest.getParameter("displayName")}]];
+                config.editorConfig.customization.plugins = false;
+                config.editorConfig.customization.goback.text = "回到首页";
 
                 config.width = "100%";
                 config.height = "100%";

@@ -32,6 +32,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 //TODO: Rebuild completely
@@ -72,13 +74,15 @@ public class DefaultHistoryManager implements HistoryManager {
                 Map<String, Object> dataObj = new HashMap<String, Object>();
                 String verDir = documentManager.versionDir(histDir, i, true);
 
-                String key = i == curVer ? document.getKey() : readFileToEnd(new File(verDir + File.separator + "key.txt"));
+                String key = i.equals(curVer) ? document.getKey() : readFileToEnd(new File(verDir + File.separator + "key.txt"));
                 obj.put("key", key);
                 obj.put("version", i);
 
                 if (i == 1) {
-                    String createdInfo = readFileToEnd(new File(histDir + File.separator + "createdInfo.json"));
-                    JSONObject json = (JSONObject) parser.parse(createdInfo);
+                    //String createdInfo = readFileToEnd(new File(histDir + File.separator + "createdInfo.json"));
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String fakeCreatedInfo = "{\"created\":\"" + dateFormat.format(new Date()) + "\",\"name\":\"John Smith\",\"id\":\"1\"}";
+                    JSONObject json = (JSONObject) parser.parse(fakeCreatedInfo);
 
                     obj.put("created", json.get("created"));
                     Map<String, Object> user = new HashMap<String, Object>();
@@ -88,7 +92,7 @@ public class DefaultHistoryManager implements HistoryManager {
                 }
 
                 dataObj.put("key", key);
-                dataObj.put("url", i == curVer ? document.getUrl() :
+                dataObj.put("url", i.equals(curVer) ? document.getUrl() :
                         documentManager.getFileUri(documentManager.versionDir(histDir, i, true) + File.separator + "prev" + fileUtility.getFileExtension(document.getTitle()), true));
                 dataObj.put("version", i);
 
@@ -109,7 +113,9 @@ public class DefaultHistoryManager implements HistoryManager {
                     dataObj.put("changesUrl", documentManager.getFileUri(documentManager.versionDir(histDir, i - 1, true) + File.separator + "diff.zip", true));
                 }
 
-                if (jwtManager.tokenEnabled()) dataObj.put("token", jwtManager.createToken(dataObj));
+                if (jwtManager.tokenEnabled()) {
+                    dataObj.put("token", jwtManager.createToken(dataObj));
+                }
 
                 hist.add(obj);
                 histData.put(Integer.toString(i - 1), dataObj);
