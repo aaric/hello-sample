@@ -1,6 +1,6 @@
 # Tomcat settings
 server:
-  port: 4000
+  port: ${SERVER_PORT:4000}
 
 # Spring settings
 spring:
