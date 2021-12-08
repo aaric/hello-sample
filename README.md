@@ -274,6 +274,6 @@ server {
 
 |No.|File|Link|Remark|
 |:---:|:---:|-----|
-|1|[test.xlsx](http://10.0.11.25:9333/1,01fc39db1909)|[Excel](http://localhost:4000/editor?action=view&fileName=test.xlsx&fileUrl=http://10.0.11.25:9333/1,01fc39db1909&thirdUri=true&lang=zh&displayName=张三)|*Not Support PDF*|
-|2|[test.docx](http://10.0.11.25:9333/6,01fe0f8fd5a4)|[Word](http://localhost:4000/editor?action=view&fileName=test.docx&fileUrl=http://10.0.11.25:9333/6,01fe0f8fd5a4&thirdUri=true&lang=zh&displayName=张三)||
-|3|[test.pptx](http://10.0.11.25:9333/6,01ff978bc1c3)|[PowerPoint](http://localhost:4000/editor?action=view&fileName=test.pptx&fileUrl=http://10.0.11.25:9333/6,01ff978bc1c3&thirdUri=true&lang=zh&displayName=张三)||
+|1|[test.xlsx](http://10.0.11.25:9333/1,01fc39db1909)|[Excel](http://localhost:4000/editor?action=view&fileName=test.xlsx&fileKey=test-xlsx&fileUrl=http://10.0.11.25:9333/1,01fc39db1909&thirdUri=true&lang=zh&displayName=张三)|*Not Support PDF*|
+|2|[test.docx](http://10.0.11.25:9333/6,01fe0f8fd5a4)|[Word](http://localhost:4000/editor?action=view&fileName=test.docx&fileKey=test-docx&fileUrl=http://10.0.11.25:9333/6,01fe0f8fd5a4&thirdUri=true&lang=zh&displayName=张三)||
+|3|[test.pptx](http://10.0.11.25:9333/6,01ff978bc1c3)|[PowerPoint](http://localhost:4000/editor?action=view&fileName=test.pptx&fileKey=test-pptx&fileUrl=http://10.0.11.25:9333/6,01ff978bc1c3&thirdUri=true&lang=zh&displayName=张三)||

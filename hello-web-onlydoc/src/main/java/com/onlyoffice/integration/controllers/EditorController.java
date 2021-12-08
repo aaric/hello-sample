@@ -82,6 +82,7 @@ public class EditorController {
                         @RequestParam(value = "action", required = false) String actionParam,
                         @RequestParam(value = "type", required = false) String typeParam,
                         @RequestParam(value = "actionLink", required = false) String actionLink,
+                        @RequestParam(value = "fileKey", required = false) String fileKey,
                         @RequestParam(value = "fileUrl", required = false) String fileUrl,
                         @RequestParam(value = "thirdUri", required = false) Boolean thirdUri,
                         @RequestParam(value = "lang", required = false) String lang,
@@ -133,7 +134,11 @@ public class EditorController {
         // Third URI
         if (null != thirdUri && thirdUri) {
             Document document = fileModel.getDocument();
-            document.setKey(fileName);
+            if (StringUtils.isNotBlank(fileKey)) {
+                document.setKey(fileKey);
+            } else {
+                document.setKey(fileName);
+            }
             document.setUrl(fileUrl);
             document.getPermissions().setEdit(false);
             document.getPermissions().setComment(false);
