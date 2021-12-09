@@ -5,7 +5,7 @@
 [![spring](https://img.shields.io/badge/springboot-2.3.2-brightgreen.svg?style=flat&logo=spring)](https://docs.spring.io/spring-boot/docs/2.3.x-SNAPSHOT/reference/htmlsingle)
 [![gradle](https://img.shields.io/badge/gradle-7.2-brightgreen.svg?style=flat&logo=gradle)](https://docs.gradle.org/7.2/userguide/installation.html)
 [![build](https://github.com/aaric/hello-sample/workflows/build/badge.svg)](https://github.com/aaric/hello-sample/actions)
-[![release](https://img.shields.io/badge/release-0.14.1-blue.svg)](https://github.com/aaric/hello-sample/releases)
+[![release](https://img.shields.io/badge/release-0.14.2-blue.svg)](https://github.com/aaric/hello-sample/releases)
 
 > Hello Example.
 
@@ -211,7 +211,7 @@ map $http_upgrade $connection_upgrade {
 }
 
 upstream onlydoc-servers {
-    server 10.0.11.25:4000;
+    server 127.0.0.1:4000;
 }
 
 upstream onlyoffice-servers {
@@ -272,7 +272,7 @@ server {
 
 ### 6.2 Testing
 
-|No.|File|Link|Remark|
+|No.|File|Testing|Remark|
 |:---:|:---:|:---:|-----|
 |1|[test.xlsx](http://10.0.11.25:9333/1,01fc39db1909)|[Excel](http://localhost:4000/editor?action=view&fileName=test.xlsx&fileKey=test2xlsx&fileUrl=http://10.0.11.25:9333/1,01fc39db1909&thirdUri=true&lang=zh&displayName=张三)|*Not Support PDF*|
 |2|[test.docx](http://10.0.11.25:9333/6,01fe0f8fd5a4)|[Word](http://localhost:4000/editor?action=view&fileName=test.docx&fileKey=test2docx&fileUrl=http://10.0.11.25:9333/6,01fe0f8fd5a4&thirdUri=true&lang=zh&displayName=张三)||

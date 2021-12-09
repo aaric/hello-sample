@@ -27,6 +27,7 @@ import com.onlyoffice.integration.documentserver.models.filemodel.Document;
 import com.onlyoffice.integration.documentserver.models.filemodel.EditorConfig;
 import com.onlyoffice.integration.documentserver.models.filemodel.FileModel;
 import com.onlyoffice.integration.documentserver.storage.FileStoragePathBuilder;
+import com.onlyoffice.integration.documentserver.util.Misc;
 import com.onlyoffice.integration.dto.Mentions;
 import com.onlyoffice.integration.entities.User;
 import com.onlyoffice.integration.services.UserServices;
@@ -46,6 +47,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @CrossOrigin("*")
 @Controller
@@ -107,8 +109,10 @@ public class EditorController {
         }
 
         // Third UID
+        // Default John Smith (uid=1).
+        // com.onlyoffice.integration.documentserver.managers.history.DefaultHistoryManager#L84
         if (StringUtils.isBlank(uid)) {
-            uid = "0";
+            uid = "1";
         }
 
         Optional<User> optionalUser = userService.findUserById(Integer.parseInt(uid));
@@ -161,6 +165,7 @@ public class EditorController {
         model.addAttribute("dataCompareFile", getCompareFile());
         model.addAttribute("dataMailMergeRecipients", getMailMerge());
         model.addAttribute("usersForMentions", getUserMentions(uid));
+
         return "editor.html";
     }
 

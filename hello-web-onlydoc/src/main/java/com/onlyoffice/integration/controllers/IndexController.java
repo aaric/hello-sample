@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +70,7 @@ public class IndexController {
 
     @GetMapping("${url.index}")
     public String index(Model model) {
-        java.io.File[] files = storageMutator.getStoredFiles();
+        File[] files = storageMutator.getStoredFiles();
         List<String> docTypes = new ArrayList<>();
         List<Boolean> filesEditable = new ArrayList<>();
         List<String> versions = new ArrayList<>();
@@ -80,7 +81,7 @@ public class IndexController {
                 .map(user -> mistUtility.convertUserDescriptions(user.getName(), user.getDescriptions()))
                 .collect(Collectors.joining());
 
-        for (java.io.File file : files) {
+        for (File file : files) {
             String fileName = file.getName();
             docTypes.add(fileUtility.getDocumentType(fileName).toString().toLowerCase());
             filesEditable.add(fileUtility.getEditedExts().contains(fileUtility.getFileExtension(fileName)));

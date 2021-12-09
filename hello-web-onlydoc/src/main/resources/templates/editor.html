@@ -103,12 +103,12 @@
                 };
 
                 var config = [[${model}]];
-                //console.log(config.document.key + " -> " + config.document.url);
+                /*console.log(config.document.key + " -> " + config.document.url);*/
 
                 if (config.editorConfig.user.name == "Anonymous") {
                     config.editorConfig.user.name = "";
                 }
-                //config.editorConfig.user.name = [[${#httpServletRequest.getParameter("displayName")}]];
+                /*config.editorConfig.user.name = [[${#httpServletRequest.getParameter("displayName")}]];*/
                 config.editorConfig.customization.plugins = false;
                 config.editorConfig.customization.goback.text = "回到首页";
 
