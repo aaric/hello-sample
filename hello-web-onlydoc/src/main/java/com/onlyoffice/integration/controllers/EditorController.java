@@ -155,7 +155,7 @@ public class EditorController {
             editorConfig.getCustomization().setChat(false);
             editorConfig.getCustomization().setComments(false);
 
-            logger.info("{} -> {}: {}", displayName, document.getKey(), document.getUrl());
+            logger.info("{} -> {}({}) -> {}", displayName, fileName, document.getKey(), document.getUrl());
         }
 
         model.addAttribute("model", fileModel);
