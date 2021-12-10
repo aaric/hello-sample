@@ -4,9 +4,9 @@
 # Build:
 #   1. docker build --build-arg APP_NAME=java-backed \
 #        --build-arg APP_VERSION=1.0 \
-#        -t s1:5000/harbor_project/java-backed:1.0 .
+#        -t java-backed:1.0 .
 # Testing:
-#   1. docker run --rm -it --name backed -p 8080:8080 s1:5000/harbor_project/java-backend:1.0
+#   1. docker run --rm -it --name backed -p 8080:8080 java-backend:1.0
 #   2. docker exec -it backend ash
 FROM openjdk:8u212-jre-alpine
 
