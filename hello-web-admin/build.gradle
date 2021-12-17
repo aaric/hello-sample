@@ -4,6 +4,7 @@ dependencies {
     implementation project(":hello-service")
 
     implementation "org.apache.commons:commons-lang3"
+    implementation "commons-codec:commons-codec"
 
     implementation "io.springfox:springfox-swagger2"
     implementation "com.github.xiaoymin:knife4j-spring-boot-starter"

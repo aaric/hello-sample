@@ -7,14 +7,19 @@ import com.example.hello.emqx.MqttPublishService;
 import com.example.hello.pojo.ValidBean;
 import com.example.hello.validation.groups.Other;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.EqualsFilter;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.Set;
 
@@ -53,6 +58,32 @@ public class TestController implements TestApi {
         creationTime = new Date();
         return new ApiData<Date>()
                 .setData(creationTime);
+    }
+
+    @Override
+    @PostMapping("/upLoadFile")
+    public ApiData<String> upLoadFile(@RequestPart MultipartFile uploadFile) {
+        String path = "error";
+        try {
+            String storagePath = System.getProperty("java.io.tmpdir");
+            String fileName = uploadFile.getOriginalFilename();
+            File storageFile = new File(storagePath, fileName);
+
+            uploadFile.transferTo(storageFile);
+            log.info("upLoadFile -> storagePath: {}, fileName: {}, fileSize: {}, fileHash256: {}",
+                    storagePath,
+                    fileName,
+                    storageFile.getTotalSpace(),
+                    DigestUtils.sha256Hex((new FileInputStream(storageFile))));
+
+            path = storageFile.getAbsolutePath();
+
+        } catch (IOException e) {
+            log.error("upLoadFile exception", e);
+        }
+
+        return new ApiData<String>()
+                .setData(path);
     }
 
     @Override
